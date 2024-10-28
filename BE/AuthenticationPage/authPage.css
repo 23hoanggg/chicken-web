@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    font-family: "Quicksand", sans-serif;
+}
+
+hr {
+    border: none;
+    height: 5px;
+    background-color: black;
+    width: 20%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.form-container {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+}
+
+.form-left,
+.form-right {
+    flex: 1;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    border: 0.5px solid #ccc;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-right {
+    border-left: none;
+}
+
+form {
+    margin: 0 2rem;
+}
+
+.form-title {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    padding: 1.3rem;
+    margin-bottom: 0.4rem;
+}
+
+
+input {
+    height: 55px;
+    width: 100%;
+    padding-left: 1.5rem;
+    font-size: 15px;
+    background-color: #ededed;
+    border: none;
+    font-family: 'Quicksand', sans-serif !important;
+}
+
+input:focus {
+    outline: 1px solid rgb(199, 198, 198);
+    background-color: #fff;
+}
+
+input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+input[type="radio"]:focus {
+    outline: none;
+}
+
+.input-group {
+    padding: 1% 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group label {
+    margin-right: 10px;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.recover {
+    text-align: right;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.recover a {
+    text-decoration: none;
+    color: rgb(125, 125, 235);
+}
+
+.recover a:hover {
+    color: #e00000;
+    text-decoration: underline;
+}
+
+.btn {
+    font-size: 1.1rem;
+    padding: 8px 0;
+    border: 1px solid #e00000;
+    width: 30%;
+    background: #e00000;
+    color: white;
+    cursor: pointer;
+    transition: 1.0s;
+    font-weight: bold;
+    height: 55px;
+}
+
+.btn:hover {
+    background: #ffffff;
+    color: black;
+    border: 1px solid #e00000;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 4rem;
+    margin-top: 0.9rem;
+    font-weight: bold;
+}
+
+button {
+    color: rgb(125, 125, 235);
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+button:hover {
+    text-decoration: underline;
+    color: rgb(111, 111, 219);
+}
