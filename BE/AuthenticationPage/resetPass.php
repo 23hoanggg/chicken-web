@@ -26,7 +26,7 @@ include 'connect.php';
             <form action="sendPassword.php" method="POST" onsubmit="return validateResetPasswordForm()">
                 <div class="input-group">
                     <span class="error-message" id="emailError"></span>
-                    <input type="email" name="email" id="loginEmail" placeholder="Email" >
+                    <input type="email" name="email" id="loginEmail" placeholder="Email">
                 </div>
                 <div class="action-group">
                     <div class="action-button">
