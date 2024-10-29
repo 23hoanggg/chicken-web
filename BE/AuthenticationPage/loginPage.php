@@ -20,26 +20,31 @@
             <hr>
         </section>
         <section class="form-right">
-            <form method="post" action="logicAuth.php">
+            <form method="post" action="logicAuth.php" onsubmit="return validateLoginForm()">
                 <div class="input-group">
-                    <input type="email" name="email" id="loginEmail" placeholder="Email" required>
+                    <span class="error-message" id="emailError"></span>
+                    <input type="email" name="email" id="loginEmail" placeholder="Email">
                 </div>
                 <div class="input-group">
-                    <input type="password" name="password" id="loginPassword" placeholder="Mật khẩu" required>
+                    <span class="error-message" id="passwordError"></span>
+                    <input type="password" name="password" id="loginPassword" placeholder="Mật khẩu">
                 </div>
-                <input type="submit" class="btn" value="ĐĂNG NHẬP" name="signIn">
+                <div class="action-group">
+                    <div class="action-button">
+                        <input type="submit" class="btn" value="ĐĂNG NHẬP" name="signIn">
+                    </div>
+                    <div class="links">
+                        <p class="reset">
+                            <a href="resetPass.php" id="resetTab">Quên mật khẩu ?</a> hoặc
+                            <a href="registerPage.php" id="registerTab"> Đăng ký</a>
+                        </p>
+                    </div>
+                </div>
             </form>
-            <div class="links">
-                <p class="recover">
-                    <a href="recoverPass.php" id="recoverTab">Quên mật khẩu ?</a>
-                </p>
-                <p>Hoặc</p>
-                <p class="recover">
-                    <a href="registerPage.php" id="registerTav">Đăng ký</a>
-                </p>
-            </div>
         </section>
     </div>
+    <script src="validateForm.js"></script>
+
     <!-- <div style="display:none;" id="recoverPassword">
         <div>
             <section class="form-left">

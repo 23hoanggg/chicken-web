@@ -17,25 +17,31 @@ include 'connect.php';
 </head>
 
 <body>
-    <div id="recoverPassword" class="form-container">
+    <div id="resetPassword" class="form-container">
         <section class="form-left">
             <h1 class="form-title">Phục hồi mật khẩu</h1>
             <hr>
         </section>
         <div class="form-right">
-            <form action="sendPassword.php" method="POST">
+            <form action="sendPassword.php" method="POST" onsubmit="return validateResetPasswordForm()">
                 <div class="input-group">
-                    <input type="email" name="email" id="loginEmail" placeholder="Email" require>
+                    <span class="error-message" id="emailError"></span>
+                    <input type="email" name="email" id="loginEmail" placeholder="Email" >
                 </div>
-                <input type="submit" class="btn" value="Gửi" name="recoverPass">
+                <div class="action-group">
+                    <div class="action-button">
+                        <input type="submit" class="btn" value="Gửi" name="resetPass">
+                    </div>
+                    <div class="links">
+                        <p class="reset">
+                            <a href="loginPage.php" id="cancelTab">Hủy</a>
+                        </p>
+                    </div>
+                </div>
             </form>
-            <div class="links">
-                <p class="recover">
-                    <a href="loginPage.php" id="cancelTab">Hủy</a>
-                </p>
-            </div>
         </div>
     </div>
+    <script src="validateForm.js"></script>
 </body>
 
 </html>

@@ -26,12 +26,14 @@ if ($stmt->execute()) {
     if ($mysqli->affected_rows) {
 
         $mail = require __DIR__ . "/mailer.php";
+        var_dump($email);
+
 
         // $mail->setFrom("chickenOtoke@gmail.com");
         $mail->addAddress($email);
         $mail->Subject = "Password Reset";
         $mail->Body = <<<END
-                Click <a href="http://localhost/chickenWeb/chickenBE/authenticationPage/resetPassword.php?token=$token">here</a> 
+                Click <a href="http://localhost/OtokeChicken/BE/AuthenticationPage/resetPassword.php?token=$token">here</a> 
                 to reset your password.
             END;
 

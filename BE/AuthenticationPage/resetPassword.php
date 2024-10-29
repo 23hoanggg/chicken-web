@@ -47,22 +47,25 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
             <h1 class="form-title">Mật khẩu mới</h1>
         </section>
         <section class="form-right">
-            <form method="post" action="process-reset-password.php">
-
+            <form id="reset-password-form" method="post" action="process-reset-password.php" onsubmit="return validateNewPasswordForm()">
                 <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
 
                 <div class="input-group">
-                    <input type="password" id="password" name="password" placeholder="Nhập mật khẩu mới" require>
+                    <span class="error-message" id="password-error" style="color: red;"></span>
+                    <input type="password" id="password" name="password" placeholder="Nhập mật khẩu mới" required>
                 </div>
 
                 <div class="input-group">
-                    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" require>
+                    <span class="error-message" id="confirmation-error" style="color: red;"></span>
+                    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" required>
                 </div>
 
-                <button class="btn">Gửi</button>
+                <button type="submit" class="btn">Gửi</button>
             </form>
         </section>
     </div>
+    <script src="validateForm.js"></script>
+
 </body>
 
 </html>

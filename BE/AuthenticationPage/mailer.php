@@ -12,6 +12,7 @@ $dotenv->load();
 $mail = new PHPMailer(true);
 
 // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+// $mail->SMTPDebug = 2;
 
 $mail->isSMTP();
 $mail->SMTPAuth = true;

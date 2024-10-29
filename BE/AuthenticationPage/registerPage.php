@@ -20,36 +20,48 @@
             <hr>
         </section>
         <section class="form-right">
-            <form method="post" action="logicAuth.php">
+            <form method="post" action="logicAuth.php" onsubmit="return validateSignupForm()">
                 <div class="input-group">
-                    <input type="text" name="fName" id="fName" placeholder="Họ" required>
+                    <span class="error-message" id="fNameError"></span>
+                    <input type="text" name="fName" id="fName" placeholder="Họ">
                 </div>
                 <div class="input-group">
-                    <input type="text" name="lName" id="lName" placeholder="Tên" required>
+                    <span class="error-message" id="lNameError"></span>
+                    <input type="text" name="lName" id="lName" placeholder="Tên">
                 </div>
                 <div class="input-group">
+                    <span class="error-message" id="genderError"></span>
                     <label for="male">Nam</label>
-                    <input type="radio" name="gender" id="male" value="male" required>
-
+                    <input type="radio" name="gender" id="male" value="male">
                     <label for="female">Nữ</label>
-                    <input type="radio" name="gender" id="female" value="female" required>
+                    <input type="radio" name="gender" id="female" value="female">
                 </div>
                 <div class="input-group">
-                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <span class="error-message" id="emailError"></span>
+                    <input type="email" name="email" id="email" placeholder="Email">
                 </div>
                 <div class="input-group">
-                    <input type="password" name="password" id="password" placeholder="Mật khẩu" required>
+                    <span class="error-message" id="passwordError"></span>
+                    <input type="password" name="password" id="password" placeholder="Mật khẩu">
                 </div>
-                <input type="submit" class="btn" value="ĐĂNG KÝ" name="signUp">
+                <div class="action-group">
+                    <div class="action-button">
+                        <input type="submit" class="btn" value="ĐĂNG KÝ" name="signUp">
+                    </div>
+                    <div class="links">
+                        <p>Bạn đã có tài khoản ?</p>
+                        <p class="reset">
+                            <a href="loginPage.php" id="registerTav">Đăng nhập</a>
+                        </p>
+                    </div>
+                </div>
             </form>
-            <div class="links">
-                <p>Bạn đã có tài khoản ?</p>
-                <p class="recover">
-                    <a href="loginPage.php" id="registerTav">Đăng nhập</a>
-                </p>
-            </div>
         </section>
     </div>
+    <script src="validateForm.js"></script>
+
+
 </body>
+
 
 </html>

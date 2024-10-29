@@ -20,7 +20,7 @@ hr {
 
 .form-container {
     width: 100%;
-    height: auto;
+    height: 700px;
     padding: 0;
     margin: 0 auto;
     display: flex;
@@ -43,11 +43,15 @@ hr {
 }
 
 .form-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-left: none;
 }
 
 form {
     margin: 0 2rem;
+    width: 75%;
 }
 
 .form-title {
@@ -85,7 +89,7 @@ input[type="radio"]:focus {
 }
 
 .input-group {
-    padding: 1% 0;
+    padding: 3% 0;
     position: relative;
     display: flex;
     align-items: center;
@@ -103,28 +107,38 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
-.recover {
+.reset {
     text-align: right;
     font-size: 1rem;
-    margin-bottom: 1rem;
-
+    margin: 0; 
 }
 
-.recover a {
+.reset a {
     text-decoration: none;
     color: rgb(125, 125, 235);
+    margin: 0 5px; 
 }
 
-.recover a:hover {
+.reset a:hover {
     color: #e00000;
     text-decoration: underline;
 }
 
+.action-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.action-button {
+    width: auto;
+}
+
 .btn {
     font-size: 1.1rem;
-    padding: 8px 0;
+    padding: 5px 30px;
     border: 1px solid #e00000;
-    width: 30%;
     background: #e00000;
     color: white;
     cursor: pointer;
@@ -141,21 +155,19 @@ input[type="checkbox"] {
 
 .links {
     display: flex;
-    justify-content: space-around;
-    padding: 0 4rem;
-    margin-top: 0.9rem;
     font-weight: bold;
+    align-items: center;
+    gap: 5px; 
 }
+/* .input-group {
+    position: relative;
+    margin-bottom: 20px;
+} */
 
-button {
-    color: rgb(125, 125, 235);
-    border: none;
-    background-color: transparent;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-button:hover {
-    text-decoration: underline;
-    color: rgb(111, 111, 219);
+.error-message {
+    color: red;
+    font-size: 0.85em;
+    position: absolute;
+    top: -15px;
+    left: 0;
 }
