@@ -8,6 +8,7 @@ include 'connect.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tài khoản - Gà rán Otoké</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="icon" href="../../icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="authPage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -17,6 +18,28 @@ include 'connect.php';
 </head>
 
 <body>
+    <?php
+    session_start();
+
+    if (isset($_SESSION['sendMail_success'])) {
+        echo "<script>
+            swal('Hãy kiểm tra email của bạn !', '', 'success')
+            .then(() => {
+                window.location.href = 'loginPage.php';
+            });
+          </script>";
+        unset($_SESSION['sendMail_success']);
+    }
+
+    if (isset($_SESSION['error_message'])) {
+        $error_message = addslashes($_SESSION['error_message']);
+        echo "<script>
+            swal('Có lỗi xảy ra !', '$error_message', 'error');
+          </script>";
+        unset($_SESSION['error_message']);
+    }
+    ?>
+
     <div id="resetPassword" class="form-container">
         <section class="form-left">
             <h1 class="form-title">Phục hồi mật khẩu</h1>

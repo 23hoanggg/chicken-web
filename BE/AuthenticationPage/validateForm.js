@@ -1,3 +1,4 @@
+// LOGIN FORM
 function validateLoginForm() {
     let isValid = true;
 
@@ -27,6 +28,8 @@ function validateLoginForm() {
 document.getElementById('loginEmail').addEventListener('input', () => emailError.textContent = '');
 document.getElementById('loginPassword').addEventListener('input', () => passwordError.textContent = '');
 
+
+// SIGN UP FORM
 function validateSignupForm() {
     let isValid = true;
 
@@ -102,6 +105,8 @@ function validateResetPasswordForm() {
     return true;
 }
 
+
+// NEW PASSWORD
 function validateNewPasswordForm() {
     const password = document.getElementById('password').value;
     const passwordConfirmation = document.getElementById('password_confirmation').value;
@@ -134,3 +139,6 @@ document.getElementById('reset-password-form').addEventListener('submit', functi
         event.preventDefault();
     }
 });
+
+
+

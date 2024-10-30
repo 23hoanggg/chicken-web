@@ -1,5 +1,6 @@
 <?php
 $mysqli = require __DIR__ . "/connect.php";
+session_start();
 
 $email = $_POST["email"];
 
@@ -22,36 +23,35 @@ if (!$stmt) {
 $stmt->bind_param("sss", $token_hash, $expiry, $email);
 
 if ($stmt->execute()) {
-
     if ($mysqli->affected_rows) {
-
         $mail = require __DIR__ . "/mailer.php";
-        var_dump($email);
 
-
-        // $mail->setFrom("chickenOtoke@gmail.com");
         $mail->addAddress($email);
         $mail->Subject = "Password Reset";
         $mail->Body = <<<END
-                Click <a href="http://localhost/OtokeChicken/BE/AuthenticationPage/resetPassword.php?token=$token">here</a> 
-                to reset your password.
+                Mở đường dẫn <a href="http://localhost/OtokeChicken/BE/AuthenticationPage/resetPassword.php?token=$token">Đặt lại mật khẩu</a> 
+                để tạo mới mật khẩu cho tài khoản của bạn !!!
             END;
 
         try {
             $mail->send();
-            echo
-            "<script>
-                alert('Kiểm tra hòm thư của bạn và phục hồi mật khẩu');
-                window.location.href = 'loginPage.php';
-            </script>";
+            $_SESSION['sendMail_success'] = true;
+            header("Location: resetPass.php");
+            exit;
         } catch (Exception $e) {
-            echo "Message could not be sent. Mailer error: {$mail->ErrorInfo}";
+            $_SESSION['error_message'] = 'Không thể gửi tin nhắn. Lỗi trình gửi thư: ' . $mail->ErrorInfo;
+            header("Location: resetPass.php");
+            exit;
         }
     } else {
-        echo "Email not found or no changes made.";
+        $_SESSION['error_message'] = "Không tìm thấy email !";
+        header("Location: resetPass.php");
+        exit;
     }
 } else {
-    echo "Error updating token: " . $stmt->error;
+    $_SESSION['error_message'] = "Lỗi khi cập nhật mã thông báo: " . $stmt->error;
+    header("Location: resetPass.php");
+    exit;
 }
 
 $stmt->close();
