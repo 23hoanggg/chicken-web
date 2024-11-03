@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tài khoản - Gà rán Otoké</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="icon" href="../../icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="authPage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -14,6 +15,27 @@
 </head>
 
 <body>
+    <?php
+    session_start();
+
+    if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
+        echo "<script>
+                swal('Đăng nhập thành công !', '', 'success')
+                .then((value) => {
+                    window.location.href = '../InformationPage/information.php';
+                });
+              </script>";
+        unset($_SESSION['login_success']);
+    }
+
+    if (isset($_SESSION['error_message'])) {
+        echo "<script>
+                swal('Lỗi đăng nhập !', '" . $_SESSION['error_message'] . "', 'error');
+              </script>";
+        unset($_SESSION['error_message']);
+    }
+    ?>
+
     <div class="form-container" id="signIn">
         <section class="form-left">
             <h1 class="form-title">Đăng nhập</h1>

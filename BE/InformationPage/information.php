@@ -1,6 +1,7 @@
 <?php
 session_start();
-include '../authenticationPage/connect.php';
+include_once __DIR__ . "/../connect.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +66,7 @@ include '../authenticationPage/connect.php';
                             echo '<br>';
                             echo $row['email'];
                             echo '<br>';
-                            echo $row['location'];
+                            echo $row['locationUser'];
                             echo '<br>';
                             echo '<a href="location.php">Xem địa chỉ</a>';
                         } else {

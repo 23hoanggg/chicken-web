@@ -1,6 +1,8 @@
 <?php
 
-include 'connect.php';
+include_once __DIR__ . "/../connect.php";
+
+session_start();
 
 // Register
 if (isset($_POST['signUp'])) {
@@ -20,7 +22,7 @@ if (isset($_POST['signUp'])) {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        echo "Email Address Already Exists!";
+        $_SESSION['error_message'] = "Địa chỉ Email đã tồn tại !";
     } else {
         $insertQuery = "INSERT INTO users (firstName, lastName, email, password_hash, gender, roleUser)
                         VALUES (?, ?, ?, ?, ?, ?)";
@@ -28,15 +30,17 @@ if (isset($_POST['signUp'])) {
         $stmt->bind_param("ssssss", $firstName, $lastName, $email, $password_hash, $gender, $roleUser);
 
         if ($stmt->execute()) {
-            echo "<script>
-                    alert('Register successfully.');
-                    window.location.href = 'loginPage.php';
-                </script>";
+            $_SESSION['register_success'] = "Giờ hãy đăng nhập để tiếp tục";
+            header("Location: registerPage.php");
+            exit();
         } else {
-            echo "Error: " . $stmt->error;
+            $_SESSION['error_message'] = "Error: " . $stmt->error;
         }
     }
+    header("Location: registerPage.php");
+    exit();
 }
+
 
 // Login
 if (isset($_POST['signIn'])) {
@@ -52,19 +56,16 @@ if (isset($_POST['signIn'])) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password_hash'])) {
-            session_start();
             $_SESSION['email'] = $row['email'];
-
-            // header("Location: information.php");
-            echo "<script>
-                    alert('Login successfully.');
-                    window.location.href = '../InformationPage/information.php';
-                </script>";
+            $_SESSION['login_success'] = true;
+            header("Location: loginPage.php");
             exit();
         } else {
-            echo "Incorrect Email or Password";
+            $_SESSION['error_message'] = "Email hoặc mật khẩu không chính xác";
         }
     } else {
-        echo "Not Found, Incorrect Email or Password";
+        $_SESSION['error_message'] = "Không tìm thấy người dùng với email này";
     }
+    header("Location: loginPage.php");
+    exit();
 }

@@ -1,32 +1,46 @@
 <?php
+session_start();
 
-$token = $_GET["token"];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $token = $_POST["token"];
+    $token_hash = hash("sha256", $token);
 
-$token_hash = hash("sha256", $token);
+    $mysqli = require __DIR__ . "/../connect.php";
 
-$mysqli = require __DIR__ . "/connect.php";
 
-$sql = "SELECT * FROM users
-        WHERE reset_token_hash = ?";
+    $sql = "SELECT * FROM users WHERE reset_token_hash = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("s", $token_hash);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
 
-$stmt = $mysqli->prepare($sql);
+    if ($user === null) {
+        $_SESSION['error_message'] = "Bạn cần gửi yêu cầu đổi mật khẩu mới";
+    } elseif (strtotime($user["reset_token_expires_at"]) <= time()) {
+        $_SESSION['error_message'] = "Yêu cầu đã hết hạn";
+    } else {
+        $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-$stmt->bind_param("s", $token_hash);
+        $sql = "UPDATE users SET password_hash = ?, reset_token_hash = NULL, reset_token_expires_at = NULL WHERE id = ?";
+        $stmt = $mysqli->prepare($sql);
 
-$stmt->execute();
+        if (!$stmt) {
+            die("SQL error: " . $mysqli->error);
+        }
 
-$result = $stmt->get_result();
+        $stmt->bind_param("ss", $password_hash, $user["id"]);
 
-$user = $result->fetch_assoc();
+        if ($stmt->execute()) {
+            $_SESSION['resetPass_success'] = true;
+        } else {
+            $_SESSION['error_message'] = "Lỗi khi cập nhật mật khẩu.";
+        }
+    }
 
-if ($user === null) {
-    die("token not found");
+    header("Location: " . $_SERVER["PHP_SELF"]);
+    exit();
 }
-
-if (strtotime($user["reset_token_expires_at"]) <= time()) {
-    die("token has expired");
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,6 +49,8 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
     <title>Mật khẩu mới</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="authPage.css">
+    <link rel="icon" href="../../icon.svg" type="image/svg+xml">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,13 +58,31 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
 </head>
 
 <body>
+    <?php
+    if (isset($_SESSION['resetPass_success']) && $_SESSION['resetPass_success'] === true) {
+        echo "<script>
+            swal('Tạo mới mật khẩu thành công!', '', 'success')
+            .then(() => {
+                window.location.href = 'loginPage.php';
+            });
+        </script>";
+        unset($_SESSION['resetPass_success']);
+    }
+
+    if (isset($_SESSION['error_message'])) {
+        echo "<script>
+            swal('Lỗi đổi mật khẩu!', '" . $_SESSION['error_message'] . "', 'error');
+        </script>";
+        unset($_SESSION['error_message']);
+    }
+    ?>
     <div class="form-container">
         <section class="form-left">
             <h1 class="form-title">Mật khẩu mới</h1>
         </section>
         <section class="form-right">
-            <form id="reset-password-form" method="post" action="process-reset-password.php" onsubmit="return validateNewPasswordForm()">
-                <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
+            <form id="reset-password-form" method="post" action="" onsubmit="return validateNewPasswordForm()">
+                <input type="hidden" name="token" value="<?= htmlspecialchars($_GET["token"] ?? "") ?>">
 
                 <div class="input-group">
                     <span class="error-message" id="password-error" style="color: red;"></span>
@@ -65,7 +99,6 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
         </section>
     </div>
     <script src="validateForm.js"></script>
-
 </body>
 
 </html>
