@@ -1,6 +1,6 @@
 <?php
 
-include_once __DIR__ . "/../connect.php";
+include_once __DIR__ . "/../../connect.php";
 
 session_start();
 
@@ -31,13 +31,13 @@ if (isset($_POST['signUp'])) {
 
         if ($stmt->execute()) {
             $_SESSION['register_success'] = "Giờ hãy đăng nhập để tiếp tục";
-            header("Location: registerPage.php");
+            header("Location: register-page.php");
             exit();
         } else {
             $_SESSION['error_message'] = "Error: " . $stmt->error;
         }
     }
-    header("Location: registerPage.php");
+    header("Location: register-page.php");
     exit();
 }
 
@@ -58,7 +58,7 @@ if (isset($_POST['signIn'])) {
         if (password_verify($password, $row['password_hash'])) {
             $_SESSION['email'] = $row['email'];
             $_SESSION['login_success'] = true;
-            header("Location: loginPage.php");
+            header("Location: login-page.php");
             exit();
         } else {
             $_SESSION['error_message'] = "Email hoặc mật khẩu không chính xác";
@@ -66,6 +66,6 @@ if (isset($_POST['signIn'])) {
     } else {
         $_SESSION['error_message'] = "Không tìm thấy người dùng với email này";
     }
-    header("Location: loginPage.php");
+    header("Location: login-page.php");
     exit();
 }

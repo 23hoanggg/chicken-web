@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tài khoản - Gà rán Otoké</title>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="icon" href="../../icon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="authPage.css">
+    <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../utils/authPage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
         echo "<script>
                 swal('Đăng nhập thành công !', '', 'success')
                 .then((value) => {
-                    window.location.href = '../InformationPage/information.php';
+                    window.location.href = '../../information-page/information/information.php';
                 });
               </script>";
         unset($_SESSION['login_success']);
@@ -42,7 +42,7 @@
             <hr>
         </section>
         <section class="form-right">
-            <form method="post" action="logicAuth.php" onsubmit="return validateLoginForm()">
+            <form method="post" action="logic-auth.php" onsubmit="return validateLoginForm()">
                 <div class="input-group">
                     <span class="error-message" id="emailError"></span>
                     <input type="email" name="email" id="loginEmail" placeholder="Email">
@@ -57,15 +57,15 @@
                     </div>
                     <div class="links">
                         <p class="reset">
-                            <a href="resetPass.php" id="resetTab">Quên mật khẩu ?</a> hoặc
-                            <a href="registerPage.php" id="registerTab"> Đăng ký</a>
+                            <a href="../handle-mail/mail-pass-page.php" id="resetTab">Quên mật khẩu ?</a> hoặc
+                            <a href="register-page.php" id="registerTab"> Đăng ký</a>
                         </p>
                     </div>
                 </div>
             </form>
         </section>
     </div>
-    <script src="validateForm.js"></script>
+    <script src="../utils/validateForm.js"></script>
 
     <!-- <div style="display:none;" id="recoverPassword">
         <div>

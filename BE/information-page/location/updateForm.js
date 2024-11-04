@@ -1,3 +1,16 @@
+function toggleForm() {
+    const divInformation = document.querySelector('.account-info');
+    const formUpdate = document.querySelector('.form-update');
+    if (formUpdate.style.display === '' || formUpdate.style.display === 'none') {
+        formUpdate.style.display = 'block';
+        divInformation.style.display = 'none';
+    } else {
+        formUpdate.style.display = 'none';
+        divInformation.style.display = 'block';
+    }
+}
+
+
 function validateUpdateForm() {
     const fName = document.getElementById('fName').value.trim();
     const lName = document.getElementById('lName').value.trim();
@@ -36,7 +49,7 @@ function validateUpdateForm() {
         document.getElementById('phoneError').innerText = 'Số điện thoại không được để trống.';
         valid = false;
     } else if (!/^[0-9]{10,15}$/.test(phone)) {
-        document.getElementById('phoneError').innerText = 'Số điện thoại không hợp lệ. Phải chứa từ 10 đến 15 chữ số.';
+        document.getElementById('phoneError').innerText = 'Số điện thoại không hợp lệ.';
         valid = false;
     }
 

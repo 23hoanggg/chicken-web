@@ -1,9 +1,9 @@
 <?php
-session_start(); 
-$mysqli = require __DIR__ . '/../connect.php';
+session_start();
+$mysqli = require __DIR__ . '/../../connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $userId = isset($_POST['id']) ? intval(trim($_POST['id'])) : 0; 
+    $userId = isset($_POST['id']) ? intval(trim($_POST['id'])) : 0;
     $firstName = isset($_POST['fName']) ? htmlspecialchars(trim($_POST['fName'])) : '';
     $lastName = isset($_POST['lName']) ? htmlspecialchars(trim($_POST['lName'])) : '';
     $locationUser = isset($_POST['location']) ? htmlspecialchars(trim($_POST['location'])) : '';
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($stmt->execute()) {
         if ($stmt->affected_rows > 0) {
-            $_SESSION['update_success'] = true; 
+            $_SESSION['update_success'] = true;
         } else {
             $_SESSION['error_message'] = "Không có thay đổi nào được thực hiện.";
         }
@@ -23,9 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $stmt->close();
-    header("Location: ../InformationPage/location.php");
-    exit(); 
+    header("Location: ../location/location.php");
+    exit();
 }
 
 $mysqli->close();
-?>

@@ -1,5 +1,6 @@
 <?php
-include_once __DIR__ . "/../connect.php";
+include_once __DIR__ . "/../../connect.php";
+
 
 ?>
 <!DOCTYPE html>
@@ -10,8 +11,8 @@ include_once __DIR__ . "/../connect.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tài khoản - Gà rán Otoké</title>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="icon" href="../../icon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="authPage.css">
+    <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../utils/authPage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +27,7 @@ include_once __DIR__ . "/../connect.php";
         echo "<script>
             swal('Hãy kiểm tra email của bạn !', '', 'success')
             .then(() => {
-                window.location.href = 'loginPage.php';
+                window.location.href = '../handle-auth/login-page.php';
             });
           </script>";
         unset($_SESSION['sendMail_success']);
@@ -47,7 +48,7 @@ include_once __DIR__ . "/../connect.php";
             <hr>
         </section>
         <div class="form-right">
-            <form action="sendPassword.php" method="POST" onsubmit="return validateResetPasswordForm()">
+            <form action="send-pass-handle.php" method="POST" onsubmit="return validateResetPasswordForm()">
                 <div class="input-group">
                     <span class="error-message" id="emailError"></span>
                     <input type="email" name="email" id="loginEmail" placeholder="Email">
@@ -58,14 +59,14 @@ include_once __DIR__ . "/../connect.php";
                     </div>
                     <div class="links">
                         <p class="reset">
-                            <a href="loginPage.php" id="cancelTab">Hủy</a>
+                            <a href="../handle-auth/login-page.php" id="cancelTab">Hủy</a>
                         </p>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    <script src="validateForm.js"></script>
+    <script src="../utils/validateForm.js"></script>
 </body>
 
 </html>

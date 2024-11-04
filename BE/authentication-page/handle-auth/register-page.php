@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tạo tài khoản - Gà rán Otoké</title>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="icon" href="../../icon.svg" type="image/svg+xml">
+    <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="authPage.css">
+    <link rel="stylesheet" href="../utils/authPage.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
         echo "<script>
                 swal('Đăng ký thành công !', '" . $_SESSION['register_success'] . "', 'success')
                 .then(() => {
-                    window.location.href = 'loginPage.php';
+                    window.location.href = 'login-page.php';
                 });
               </script>";
         unset($_SESSION['register_success']);
@@ -42,7 +42,7 @@
             <hr>
         </section>
         <section class="form-right">
-            <form method="post" action="logicAuth.php" onsubmit="return validateSignupForm()">
+            <form method="post" action="logic-auth.php" onsubmit="return validateSignupForm()">
                 <div class="input-group">
                     <span class="error-message" id="fNameError"></span>
                     <input type="text" name="fName" id="fName" placeholder="Họ">
@@ -73,14 +73,14 @@
                     <div class="links">
                         <p>Bạn đã có tài khoản ?</p>
                         <p class="reset">
-                            <a href="loginPage.php" id="registerTav">Đăng nhập</a>
+                            <a href="login-page.php" id="registerTav">Đăng nhập</a>
                         </p>
                     </div>
                 </div>
             </form>
         </section>
     </div>
-    <script src="validateForm.js"></script>
+    <script src="../utils/validateForm.js"></script>
 </body>
 
 

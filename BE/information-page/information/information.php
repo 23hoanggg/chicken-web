@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once __DIR__ . "/../connect.php";
+include_once __DIR__ . "/../../connect.php";
 
 ?>
 
@@ -11,7 +11,7 @@ include_once __DIR__ . "/../connect.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tài khoản - gà rán Otoké</title>
-    <link rel="icon" href="../../icon.svg" type="image/svg+xml">
+    <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="information.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,13 +34,13 @@ include_once __DIR__ . "/../connect.php";
                             <path fill="currentColor"
                                 d="M28.012 28.023c5.578 0 10.125-4.968 10.125-11.015c0-6-4.5-10.711-10.125-10.711c-5.555 0-10.125 4.805-10.125 10.758c.023 6.023 4.57 10.968 10.125 10.968m0-3.539c-3.422 0-6.352-3.28-6.352-7.43c0-4.077 2.883-7.218 6.352-7.218c3.515 0 6.351 3.094 6.351 7.172c0 4.148-2.883 7.476-6.351 7.476m-14.719 25.22h29.438c3.89 0 5.742-1.173 5.742-3.75c0-6.142-7.735-15.024-20.461-15.024c-12.727 0-20.485 8.883-20.485 15.023c0 2.578 1.852 3.75 5.766 3.75m-1.125-3.54c-.61 0-.867-.164-.867-.656c0-3.844 5.953-11.04 16.71-11.04c10.759 0 16.688 7.196 16.688 11.04c0 .492-.234.656-.843.656Z" />
                         </svg>
-                        <a href="information.php">Thông tin tài khoản</a>
+                        <a href="../information/information.php">Thông tin tài khoản</a>
                     </li>
                     <li>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                             <path fill="currentColor" d="M10 20S3 10.87 3 7a7 7 0 1 1 14 0c0 3.87-7 13-7 13zm0-11a2 2 0 1 0 0-4a2 2 0 0 0 0 4z" />
                         </svg>
-                        <a href="location.php">Danh sách địa chỉ</a>
+                        <a href="../location/location.php">Danh sách địa chỉ</a>
                     </li>
                     <li>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
@@ -49,7 +49,7 @@ include_once __DIR__ . "/../connect.php";
                                 <path d="M9 12h12l-3-3m0 6l3-3" />
                             </g>
                         </svg>
-                        <a href="../AuthenticationPage/logout.php">Đăng xuất</a>
+                        <a href="../../authentication-page/handle-auth/login-page.php">Đăng xuất</a>
                     </li>
                 </ul>
             </section>
@@ -68,7 +68,7 @@ include_once __DIR__ . "/../connect.php";
                             echo '<br>';
                             echo $row['locationUser'];
                             echo '<br>';
-                            echo '<a href="location.php">Xem địa chỉ</a>';
+                            echo '<a href="../location/location.php">Xem địa chỉ</a>';
                         } else {
                             echo "Không tìm thấy thông tin người dùng";
                         }
@@ -77,6 +77,7 @@ include_once __DIR__ . "/../connect.php";
                     }
                     ?>
                 </div>
+                
             </section>
         </div>
     </div>

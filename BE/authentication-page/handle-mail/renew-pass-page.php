@@ -5,8 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $token = $_POST["token"];
     $token_hash = hash("sha256", $token);
 
-    $mysqli = require __DIR__ . "/../connect.php";
-
+    $mysqli = require __DIR__ . "/../../connect.php";
 
     $sql = "SELECT * FROM users WHERE reset_token_hash = ?";
     $stmt = $mysqli->prepare($sql);
@@ -16,25 +15,32 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $user = $result->fetch_assoc();
 
     if ($user === null) {
-        $_SESSION['error_message'] = "Bạn cần gửi yêu cầu đổi mật khẩu mới";
+        $_SESSION['error_message'] = "Bạn cần gửi yêu cầu đổi mật khẩu mới.";
     } elseif (strtotime($user["reset_token_expires_at"]) <= time()) {
-        $_SESSION['error_message'] = "Yêu cầu đã hết hạn";
+        $_SESSION['error_message'] = "Yêu cầu đã hết hạn.";
     } else {
-        $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        $password = $_POST["password"];
+        $password_confirmation = $_POST["password_confirmation"];
 
-        $sql = "UPDATE users SET password_hash = ?, reset_token_hash = NULL, reset_token_expires_at = NULL WHERE id = ?";
-        $stmt = $mysqli->prepare($sql);
-
-        if (!$stmt) {
-            die("SQL error: " . $mysqli->error);
-        }
-
-        $stmt->bind_param("ss", $password_hash, $user["id"]);
-
-        if ($stmt->execute()) {
-            $_SESSION['resetPass_success'] = true;
+        if ($password !== $password_confirmation) {
+            $_SESSION['error_message'] = "Mật khẩu và mật khẩu xác nhận không khớp.";
         } else {
-            $_SESSION['error_message'] = "Lỗi khi cập nhật mật khẩu.";
+            $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+            $sql = "UPDATE users SET password_hash = ?, reset_token_hash = NULL, reset_token_expires_at = NULL WHERE id = ?";
+            $stmt = $mysqli->prepare($sql);
+
+            if (!$stmt) {
+                die("SQL error: " . $mysqli->error);
+            }
+
+            $stmt->bind_param("ss", $password_hash, $user["id"]);
+
+            if ($stmt->execute()) {
+                $_SESSION['resetPass_success'] = true;
+            } else {
+                $_SESSION['error_message'] = "Lỗi khi cập nhật mật khẩu.";
+            }
         }
     }
 
@@ -48,8 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <title>Mật khẩu mới</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="authPage.css">
-    <link rel="icon" href="../../icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../utils/authPage.css">
+    <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "<script>
             swal('Tạo mới mật khẩu thành công!', '', 'success')
             .then(() => {
-                window.location.href = 'loginPage.php';
+                window.location.href = '../handle-auth/login-page.php';
             });
         </script>";
         unset($_SESSION['resetPass_success']);
@@ -98,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </form>
         </section>
     </div>
-    <script src="validateForm.js"></script>
+    <script src="../utils/validateForm.js"></script>
 </body>
 
 </html>
