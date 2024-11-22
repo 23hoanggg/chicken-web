@@ -11,6 +11,8 @@ include_once __DIR__ . "/../../connect.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tài khoản - gà rán Otoké</title>
+    <link rel="stylesheet" href="../../../fe/utils/header.css">
+    <link rel="stylesheet" href="../../../fe/utils/footer.css">
     <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="information.css">
@@ -20,6 +22,9 @@ include_once __DIR__ . "/../../connect.php";
 </head>
 
 <body>
+    <?php
+    include '../../../fe/utils/header.php';
+    ?>
     <div class="info-container">
         <section class="info-title-box">
             <h1 class="title-info-container">Tài khoản của bạn</h1>
@@ -77,10 +82,13 @@ include_once __DIR__ . "/../../connect.php";
                     }
                     ?>
                 </div>
-                
+
             </section>
         </div>
     </div>
+    <?php
+    include '../../../fe/utils/footer.php';
+    ?>
 </body>
 
 </html>

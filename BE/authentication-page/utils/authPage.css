@@ -9,7 +9,7 @@ body {
     font-family: "Quicksand", sans-serif;
 }
 
-hr {
+.hr-auth {
     border: none;
     height: 5px;
     background-color: black;

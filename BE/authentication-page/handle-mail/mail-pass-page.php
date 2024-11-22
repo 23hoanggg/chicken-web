@@ -13,6 +13,8 @@ include_once __DIR__ . "/../../connect.php";
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../utils/authPage.css">
+    <link rel="stylesheet" href="../../../fe/utils/header.css">
+    <link rel="stylesheet" href="../../../fe/utils/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,11 +43,13 @@ include_once __DIR__ . "/../../connect.php";
         unset($_SESSION['error_message']);
     }
     ?>
-
+     <?php
+    include '../../../fe/utils/header.php';
+    ?>
     <div id="resetPassword" class="form-container">
         <section class="form-left">
             <h1 class="form-title">Phục hồi mật khẩu</h1>
-            <hr>
+            <hr class="hr-auth">
         </section>
         <div class="form-right">
             <form action="send-pass-handle.php" method="POST" onsubmit="return validateResetPasswordForm()">
@@ -66,6 +70,9 @@ include_once __DIR__ . "/../../connect.php";
             </form>
         </div>
     </div>
+    <?php
+    include '../../../fe/utils/footer.php';
+    ?>
     <script src="../utils/validateForm.js"></script>
 </body>
 

@@ -26,6 +26,8 @@ if (isset($_SESSION['email'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Địa chỉ - gà rán Otoké</title>
     <link rel="stylesheet" href="location.css">
+    <link rel="stylesheet" href="../../../fe/utils/header.css">
+    <link rel="stylesheet" href="../../../fe/utils/footer.css">
     <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -58,6 +60,9 @@ if (isset($_SESSION['email'])) {
     }
     ?>
 
+    <?php
+    include '../../../fe/utils/header.php';
+    ?>
     <div class="info-container">
         <section class="info-title">
             <h1 class="title-info-container">Tài khoản của bạn</h1>
@@ -161,8 +166,10 @@ if (isset($_SESSION['email'])) {
                 </div>
             </section>
         </div>
-
     </div>
+    <?php
+    include '../../../fe/utils/footer.php';
+    ?>
     <script src="updateForm.js"></script>
 </body>
 

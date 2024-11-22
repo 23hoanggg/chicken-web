@@ -7,6 +7,8 @@
     <title>Tạo tài khoản - Gà rán Otoké</title>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../../fe/utils/header.css">
+    <link rel="stylesheet" href="../../../fe/utils/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../utils/authPage.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +37,9 @@
         unset($_SESSION['error_message']);
     }
     ?>
-
+    <?php
+    include '../../../fe/utils/header.php';
+    ?>
     <div class="form-container" id="signup">
         <section class="form-left">
             <h1 class="form-title">Tạo tài khoản</h1>
@@ -80,6 +84,9 @@
             </form>
         </section>
     </div>
+    <?php
+    include '../../../fe/utils/footer.php';
+    ?>
     <script src="../utils/validateForm.js"></script>
 </body>
 

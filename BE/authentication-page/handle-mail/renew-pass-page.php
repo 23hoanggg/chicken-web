@@ -56,6 +56,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../utils/authPage.css">
     <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../../fe/utils/header.css">
+    <link rel="stylesheet" href="../../../fe/utils/footer.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,6 +84,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         unset($_SESSION['error_message']);
     }
     ?>
+    <?php
+    include '../../../fe/utils/header.php';
+    ?>
     <div class="form-container">
         <section class="form-left">
             <h1 class="form-title">Mật khẩu mới</h1>
@@ -104,6 +109,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </form>
         </section>
     </div>
+    <?php
+    include '../../../fe/utils/footer.php';
+    ?>
     <script src="../utils/validateForm.js"></script>
 </body>
 
