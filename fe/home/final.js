@@ -73,3 +73,5 @@ function showNextSlider()
   currentIndex = (currentIndex + 1) % totalSliders; // Quay vòng khi đến slider cuối cùng
   sliders[currentIndex].classList.add("active");
 }
+
+setInterval(showNextSlider, 5000); // Chuyển slider sau mỗi 5 giây

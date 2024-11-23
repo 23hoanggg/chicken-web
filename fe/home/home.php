@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="../utils/header.css"/>
+    <link rel="stylesheet" href="../utils/footer.css"/>
+    <script src="../utils/search.js"></script>
     <title>Gà rán Otoké - Đậm vị Hàn Quốc!</title>
 </head>
 
@@ -393,7 +396,7 @@
             <a href="https://www.haravan.com">Haravan</a>.
         </p>
     </div>
-    <!-- <script src="final.js"></script> -->
+    <script src="final.js"></script>
 </body>
 
 </html>

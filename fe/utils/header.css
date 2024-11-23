@@ -632,3 +632,7 @@ h2 a:hover {
 .search-container{
   display: none ;
 }
+.button-search{
+  background-color: white;
+  border: none;
+}

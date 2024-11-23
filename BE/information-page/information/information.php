@@ -2,6 +2,18 @@
 session_start();
 include_once __DIR__ . "/../../connect.php";
 
+if (!isset($_SESSION['email'])) {
+    header("Location: ../../authentication-page/handle-auth/login-page.php");
+    exit();
+}
+
+$email = $_SESSION['email'];
+$stmt = $conn->prepare("SELECT firstName, lastName, email, locationUser FROM users WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -22,13 +34,12 @@ include_once __DIR__ . "/../../connect.php";
 </head>
 
 <body>
-    <?php
-    include '../../../fe/utils/header.php';
-    ?>
+    <?php include '../../../fe/utils/header.php'; ?>
+    
     <div class="info-container">
         <section class="info-title-box">
             <h1 class="title-info-container">Tài khoản của bạn</h1>
-            <hr>
+            <hr class="hr-information">
         </section>
         <div class="info-box">
             <section class="info-menu">
@@ -36,8 +47,7 @@ include_once __DIR__ . "/../../connect.php";
                 <ul>
                     <li>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 56 56">
-                            <path fill="currentColor"
-                                d="M28.012 28.023c5.578 0 10.125-4.968 10.125-11.015c0-6-4.5-10.711-10.125-10.711c-5.555 0-10.125 4.805-10.125 10.758c.023 6.023 4.57 10.968 10.125 10.968m0-3.539c-3.422 0-6.352-3.28-6.352-7.43c0-4.077 2.883-7.218 6.352-7.218c3.515 0 6.351 3.094 6.351 7.172c0 4.148-2.883 7.476-6.351 7.476m-14.719 25.22h29.438c3.89 0 5.742-1.173 5.742-3.75c0-6.142-7.735-15.024-20.461-15.024c-12.727 0-20.485 8.883-20.485 15.023c0 2.578 1.852 3.75 5.766 3.75m-1.125-3.54c-.61 0-.867-.164-.867-.656c0-3.844 5.953-11.04 16.71-11.04c10.759 0 16.688 7.196 16.688 11.04c0 .492-.234.656-.843.656Z" />
+                            <path fill="currentColor" d="M28.012 28.023c5.578 0 10.125-4.968 10.125-11.015c0-6-4.5-10.711-10.125-10.711c-5.555 0-10.125 4.805-10.125 10.758c.023 6.023 4.57 10.968 10.125 10.968m0-3.539c-3.422 0-6.352-3.28-6.352-7.43c0-4.077 2.883-7.218 6.352-7.218c3.515 0 6.351 3.094 6.351 7.172c0 4.148-2.883 7.476-6.351 7.476m-14.719 25.22h29.438c3.89 0 5.742-1.173 5.742-3.75c0-6.142-7.735-15.024-20.461-15.024c-12.727 0-20.485 8.883-20.485 15.023c0 2.578 1.852 3.75 5.766 3.75m-1.125-3.54c-.61 0-.867-.164-.867-.656c0-3.844 5.953-11.04 16.71-11.04c10.759 0 16.688 7.196 16.688 11.04c0 .492-.234.656-.843.656Z" />
                         </svg>
                         <a href="../information/information.php">Thông tin tài khoản</a>
                     </li>
@@ -54,41 +64,27 @@ include_once __DIR__ . "/../../connect.php";
                                 <path d="M9 12h12l-3-3m0 6l3-3" />
                             </g>
                         </svg>
-                        <a href="../../authentication-page/handle-auth/login-page.php">Đăng xuất</a>
+                        <a href="../../authentication-page/handle-auth/logout.php">Đăng xuất</a>
                     </li>
                 </ul>
             </section>
             <section class="info-full">
                 <h3 class="title-info-box">THÔNG TIN TÀI KHOẢN</h3>
                 <div class="account-info">
-                    <?php
-                    if (isset($_SESSION['email'])) {
-                        $email = $_SESSION['email'];
-                        $query = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
-                        if (mysqli_num_rows($query) > 0) {
-                            $row = mysqli_fetch_assoc($query);
-                            echo $row['firstName'] . ' ' . $row['lastName'];
-                            echo '<br>';
-                            echo $row['email'];
-                            echo '<br>';
-                            echo $row['locationUser'];
-                            echo '<br>';
-                            echo '<a href="../location/location.php">Xem địa chỉ</a>';
-                        } else {
-                            echo "Không tìm thấy thông tin người dùng";
-                        }
-                    } else {
-                        echo "Vui lòng đăng nhập";
-                    }
-                    ?>
+                    <?php if ($user): ?>
+                        <p><?= $user['firstName'] . ' ' . $user['lastName'] ?></p>
+                        <p><?= $user['email'] ?></p>
+                        <p><?= $user['locationUser'] ?></p>
+                        <a href="../location/location.php">Xem địa chỉ</a>
+                    <?php else: ?>
+                        <p>Không tìm thấy thông tin người dùng</p>
+                    <?php endif; ?>
                 </div>
-
             </section>
         </div>
     </div>
-    <?php
-    include '../../../fe/utils/footer.php';
-    ?>
+    <?php include '../../../fe/utils/footer.php'; ?>
+    <script src="../../../fe/home/final.js"></script>
 </body>
 
 </html>

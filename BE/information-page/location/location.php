@@ -66,7 +66,7 @@ if (isset($_SESSION['email'])) {
     <div class="info-container">
         <section class="info-title">
             <h1 class="title-info-container">Tài khoản của bạn</h1>
-            <hr>
+            <hr class="hr-location">
         </section>
         <div class="info-box">
             <section class="info-menu">
@@ -171,6 +171,7 @@ if (isset($_SESSION['email'])) {
     include '../../../fe/utils/footer.php';
     ?>
     <script src="updateForm.js"></script>
+    <script src="../../../fe/home/final.js"></script>
 </body>
 
 </html>
