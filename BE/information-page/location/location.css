@@ -15,7 +15,7 @@ body {
     flex-direction: column;
 }
 
-.hr-location{
+.hr-location {
     border: none;
     height: 5px;
     background-color: black;

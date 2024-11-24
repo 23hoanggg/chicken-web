@@ -1,11 +1,21 @@
-document.querySelector('.button-search').addEventListener('click', function () {
+document.addEventListener('DOMContentLoaded', function () {
     const searchContainer = document.querySelector('.search-container');
+    const searchButton = document.getElementById('site-search-handle');
 
-    if (searchContainer.style.display === "none" || searchContainer.style.display === "") {
-        searchContainer.style.display = "block";
-        console.log("clickkkkk");
-    } else {
-        searchContainer.style.display = "none";
-        console.log("clickkkkk22222");
-    }
+    searchButton.addEventListener('click', function (event) {
+        event.stopPropagation();
+        searchContainer.style.display = 'flex';
+        setTimeout(() => {
+            searchContainer.classList.add('active');
+        }, 10);
+    });
+
+    document.addEventListener('click', function (event) {
+        if (!searchContainer.contains(event.target) && event.target !== searchButton) {
+            searchContainer.classList.remove('active');
+            setTimeout(() => {
+                searchContainer.style.display = 'none';
+            }, 300);
+        }
+    });
 });

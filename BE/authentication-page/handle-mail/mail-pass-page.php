@@ -13,6 +13,7 @@ include_once __DIR__ . "/../../connect.php";
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../utils/authPage.css">
+    <link rel="stylesheet" href="../../../fe/contact/contact.css">
     <link rel="stylesheet" href="../../../fe/utils/header.css">
     <link rel="stylesheet" href="../../../fe/utils/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -43,7 +44,7 @@ include_once __DIR__ . "/../../connect.php";
         unset($_SESSION['error_message']);
     }
     ?>
-     <?php
+    <?php
     include '../../../fe/utils/header.php';
     ?>
     <div id="resetPassword" class="form-container">
@@ -74,6 +75,9 @@ include_once __DIR__ . "/../../connect.php";
     include '../../../fe/utils/footer.php';
     ?>
     <script src="../utils/validateForm.js"></script>
+    <script src="../../../fe/home/final.js"></script>
+    <script src="../../../fe/contact/contact.js"></script>
+    <script src="../../../fe/utils/search.js"></script>
 </body>
 
 </html>

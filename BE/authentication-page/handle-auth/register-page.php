@@ -9,6 +9,7 @@
     <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../../../fe/utils/header.css">
     <link rel="stylesheet" href="../../../fe/utils/footer.css">
+    <link rel="stylesheet" href="../../../fe/contact/contact.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../utils/authPage.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,8 +88,10 @@
     <?php
     include '../../../fe/utils/footer.php';
     ?>
+    <script src="../../../fe/contact/contact.js"></script>
+    <script src="../../../fe/utils/search.js"></script>
     <script src="../utils/validateForm.js"></script>
+    <script src="../../../fe/home/final.js"></script>
 </body>
-
 
 </html>

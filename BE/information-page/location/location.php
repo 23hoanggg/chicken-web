@@ -28,6 +28,7 @@ if (isset($_SESSION['email'])) {
     <link rel="stylesheet" href="location.css">
     <link rel="stylesheet" href="../../../fe/utils/header.css">
     <link rel="stylesheet" href="../../../fe/utils/footer.css">
+    <link rel="stylesheet" href="../../../fe/contact/contact.css">
     <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -171,6 +172,8 @@ if (isset($_SESSION['email'])) {
     include '../../../fe/utils/footer.php';
     ?>
     <script src="updateForm.js"></script>
+    <script src="../../../fe/contact/contact.js"></script>
+    <script src="../../../fe/utils/search.js"></script>
     <script src="../../../fe/home/final.js"></script>
 </body>
 

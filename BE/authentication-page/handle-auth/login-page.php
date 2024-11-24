@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="../../../fe/utils/header.css">
     <link rel="stylesheet" href="../../../fe/utils/footer.css">
+    <link rel="stylesheet" href="../../../fe/contact/contact.css">
     <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../utils/authPage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -38,7 +39,7 @@
     }
     ?>
 
-<?php
+    <?php
     include '../../../fe/utils/header.php';
     ?>
     <div class="form-container" id="signIn">
@@ -92,6 +93,10 @@
         </div>
     </div> -->
     <!-- <script src="recover.js"></script> -->
+    <script src="../../../fe/contact/contact.js"></script>
+    <script src="../../../fe/utils/search.js"></script>
+    <script src="../../../fe/home/final.js"></script>
+
 </body>
 
 </html>
