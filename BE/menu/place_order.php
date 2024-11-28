@@ -12,6 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             exit;  // Dừng xử lý nếu giỏ hàng trống
         }
 
+        if (isset($_SESSION['user_id'])) {
+            $user_id = $_SESSION['user_id'];
+        } else {
+            die("Bạn phải đăng nhập trước khi đặt hàng.");
+        }
+
         $total_amount = 0;
         foreach ($cart as $item) {
             if (isset($item['price'], $item['quantity'])) {
@@ -54,4 +60,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         echo "Giỏ hàng của bạn trống.";
     }
 }
-?>

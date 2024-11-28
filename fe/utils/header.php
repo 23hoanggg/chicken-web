@@ -190,6 +190,12 @@ include_once __DIR__ . "../../../be/menu/add_to_cart.php";
             </ul>
         </div>
         <div class="search-container">
+            <div class="search-text">
+                <h1>Tìm kiếm sản phẩm</h1>
+            </div>
+            <div class="input-search-bar">
+                <input type="text" placeholder="Nhập tên sản phẩm..." class="input-search-menu">
+            </div>
             <!-- <div class="icon-menu-search">
                 <?php
                 if (isset($_SESSION['email'])) {
