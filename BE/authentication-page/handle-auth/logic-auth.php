@@ -57,6 +57,7 @@ if (isset($_POST['signIn'])) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password_hash'])) {
             $_SESSION['email'] = $row['email'];
+            $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['login_success'] = true;
             header("Location: login-page.php");
             exit();

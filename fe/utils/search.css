@@ -1,10 +1,68 @@
 .search-container {
-    display: none;
+    position: relative;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}   
+
+.search-results {
+    display: none; /* Ẩn mặc định */
     position: absolute;
+    top: 100%;
+    left: 0;
     background-color: #fff;
     border: 1px solid #ccc;
-    padding: 10px;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
     z-index: 1000;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    /* Đổ bóng */
 }
+
+.suggestion-item {
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #f9f9f9;
+}
+
+.no-suggestion {
+    padding: 10px;
+    color: #777;
+    text-align: center;
+}
+.input-search-bar {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    padding: 15px; /* Khoảng cách bên trong */
+    width: 100%; /* Chiếm hết chiều rộng container */
+    max-width: 400px; /* Giới hạn chiều rộng */
+    margin: 0 auto; /* Căn giữa thanh trên trang */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+}
+
+.input-search-menu {
+    width: 100%; 
+    padding: 10px 20px; 
+    font-size: 16px;
+    border: 1px solid #ddd; /* Đường viền mỏng */
+    border-radius: 5px; /* Bo góc trường nhập */
+    outline: none; /* Loại bỏ đường viền mặc định khi nhấn */
+    transition: all 0.3s ease; /* Hiệu ứng mượt khi hover hoặc focus */
+}
+
+.input-search-menu:focus {
+    border-color: #007bff; /* Đổi màu viền khi focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Hiệu ứng ánh sáng */
+}
+
+.input-search-menu::placeholder {
+    color: #aaa; /* Màu placeholder */
+    font-style: italic; /* Kiểu chữ */
+}
+

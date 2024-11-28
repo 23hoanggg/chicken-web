@@ -13,14 +13,21 @@ include 'update_quantity.php';
 
 <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../../fe/utils/footer.css">
+    <link rel="stylesheet" href="../../fe/utils/header.css">
+    <link rel="stylesheet" href="../../fe/utils/search.js">
+    <!-- <link rel="stylesheet" href="../../fe/utils/search.css"> -->
+    <link rel="stylesheet" href="../../fe/contact/contact.css">
+    <link rel="icon" href="../../icon.svg" type="image/svg+xml">
+
     <style>
-        /* Tổng thể */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: "Quicksand", sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
             color: #333;
         }
 
@@ -50,7 +57,7 @@ include 'update_quantity.php';
 
         /* Nút thanh toán */
         .checkout-btn {
-            background-color: #4CAF50;
+            background-color: red;
             color: white;
             border: none;
             padding: 15px 20px;
@@ -58,8 +65,13 @@ include 'update_quantity.php';
             font-weight: bold;
             cursor: pointer;
             text-align: center;
-            border-radius: 5px;
+            /* border-radius: 5px; */
             transition: background-color 0.3s ease;
+            /* float: right; */
+            /* position: absolute; */
+            /* left: 50%; */
+            /* transform: translateX(-50%); */
+            margin: 30px;
         }
 
         .checkout-btn:hover {
@@ -84,7 +96,7 @@ include 'update_quantity.php';
         .product-image img {
             max-width: 80px;
             height: auto;
-            border-radius: 5px;
+            /* border-radius: 5px; */
             border: 1px solid #ddd;
         }
 
@@ -103,31 +115,32 @@ include 'update_quantity.php';
         /* Điều khiển số lượng */
         .quantity-control {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            /* align-items: center;
+            gap: 10px; */
         }
 
         .quantity-btn {
-            background-color: #007bff;
+            /* background-color: #007bff; */
+            background-color: #ccc;
             color: white;
             border: none;
             padding: 8px 12px;
             cursor: pointer;
             font-size: 16px;
-            border-radius: 5px;
+            /* border-radius: 5px; */
             transition: background-color 0.3s ease;
         }
 
         .quantity-btn:hover {
-            background-color: #0056b3;
+            background-color: #ff4444;
         }
 
         input[type="text"] {
-            width: 50px;
+            width: 30px;
             text-align: center;
             font-size: 16px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            /* border-radius: 5px; */
             padding: 5px;
         }
 
@@ -168,10 +181,12 @@ include 'update_quantity.php';
 </head>
 
 <body>
+    <?php
+    include '../../fe/utils/header.php'
+    ?>
     <div class="checkout">
         <h1>Giỏ Hàng Của Bạn</h1>
         <div class="cart-summary">
-            <button class="checkout-btn" onclick="window.location.href='checkout.php'">THANH TOÁN</button>
             <?php
             if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
                 $cart = $_SESSION['cart'];
@@ -223,9 +238,15 @@ include 'update_quantity.php';
             }
             ?>
         </div>
+        <button class="checkout-btn" onclick="window.location.href='checkout.php'">THANH TOÁN</button>
+        <button class="checkout-btn" onclick="placeOrder()">CẬP NHẬT</button>
+        <a href="../menu/menu.php">Chọn sản phẩm trong menu</a>
     </div>
-
+    <?php
+    include '../../fe/utils/footer.php'
+    ?>
     <script>
+        // Các hàm JavaScript tương tự như bạn đã dùng
         function fadeOutEffect(element) {
             var fadeTarget = element;
             var fadeEffect = setInterval(function() {
@@ -242,13 +263,14 @@ include 'update_quantity.php';
         }
 
         function removeFromCart(productId) {
+            // Gửi yêu cầu AJAX để xóa sản phẩm
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "remove_from_cart.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    var productElement = document.querySelector(`.product-details[data-id='${productId}']`);
-                    fadeOutEffect(productElement);
+                    // Làm mới trang để cập nhật giỏ hàng
+                    document.location.reload(); // Tự động làm mới trang
                 }
             };
             xhr.send("product_id=" + productId);
@@ -264,7 +286,7 @@ include 'update_quantity.php';
             }
             quantityInput.value = quantity;
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "update_quantity.php", true);
+            xhr.open(" POST", "update_quantity.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onload = function() {
                 if (xhr.status == 200) {
@@ -273,9 +295,51 @@ include 'update_quantity.php';
                     priceElement.textContent = (pricePerUnit * quantity).toFixed(2).replace('.', ',') + " VNĐ";
                 }
             };
-            xhr.send("product_id=" + productId + "&quantity=" + quantity);
+            xhr.send("product_id=" + productId + " &quantity=" + quantity);
+        }
+
+        function placeOrder() {
+            const cart = [];
+
+            // Lặp qua các sản phẩm trong giỏ hàng
+            document.querySelectorAll('.product-details').forEach((product) => {
+                const productId = product.querySelector('.price').id.split('-')[1];
+                const price = parseFloat(product.querySelector('.price').getAttribute('data-price'));
+                const quantity = parseInt(product.querySelector(`#quantity-${productId}`).value);
+
+                // Thêm sản phẩm vào giỏ hàng
+                cart.push({
+                    id: productId,
+                    price: price,
+                    quantity: quantity
+                });
+            });
+
+            // Kiểm tra nếu giỏ hàng trống
+            if (cart.length === 0) {
+                alert("Giỏ hàng của bạn trống. Vui lòng thêm sản phẩm để đặt hàng.");
+                return; // Dừng thực hiện nếu giỏ hàng trống
+            }
+
+            // Gửi dữ liệu qua AJAX nếu giỏ hàng không trống
+            fetch('place_order.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `action=place_order&cart=${encodeURIComponent(JSON.stringify(cart))}`
+                })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data); // Thông báo kết quả
+                    window.location.href = '/otoke-chicken/be/menu/checkout.php'; // Reload trang nếu cần
+                })
+                .catch(error => console.error('Error:', error));
         }
     </script>
+    <script src="../../fe/contact/contact.js"></script>
+    <script src="../../fe/utils/search.js"></script>
+    <script src="../../fe/home/final.js"></script>
 </body>
 
 </html>

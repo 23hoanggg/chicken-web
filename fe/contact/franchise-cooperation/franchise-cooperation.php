@@ -139,7 +139,7 @@
       <h2 class="section-title">TỔNG QUAN <span>KHÁCH HÀNG</span></h2>
       <div class="customer-section">
         <div class="customer-box">
-          <img src="/img/anh1.png" alt="Khách hàng ổn định">
+          <img src="./img/anh1.png" alt="Khách hàng ổn định">
           <h3>Lượng khách ổn định</h3>
           <p>Hơn <strong>40.000</strong> khách hàng mỗi tháng và hơn <strong>500.000</strong> khách hàng mỗi năm.</p>
         </div>

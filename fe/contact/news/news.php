@@ -1,7 +1,6 @@
 <?php
 session_start();
 ?>
-<html class="no-js" lang="vi"><!--<![endif]-->
 
 <head>
 
@@ -10,43 +9,17 @@ session_start();
 	<!--[if lt IE 9]><script src="//hsta tic.net/0/0/global/design/theme-default/html5shiv.js"></script><![endif]-->
 	<!--<meta content='width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=0' name='viewport' />-->
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=0" name="viewport">
-	<meta name="revisit-after" content="1 day">
-	<meta name="HandheldFriendly" content="true">
 	<title>
-		Tin tức – Gà Rán Otoké
+		Tin tức - Gà Rán Otoké
 	</title>
 	<link rel="stylesheet" href="../../utils/header.css">
 	<link rel="stylesheet" href="../../utils/footer.css">
 	<link rel="stylesheet" href="styles.css">
-	<link rel="stylesheet" href="../../utils/search.css">
+	<!-- <link rel="stylesheet" href="../../utils/search.css"> -->
 	<link rel="stylesheet" href="../../home/final.js">
 	<link rel="stylesheet" href="../contact.css">
-	<link rel="canonical" href="https://www.otokechicken.vn/blogs/tin-tuc">
-	<link rel="alternate" href="https://www.otokechicken.vn/blogs/tin-tuc" hreflang="vi-vn">
-	<meta name="keywords" content="Gà Rán Otoké">
-	<meta name="robots" content="index,follow,noodp">
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="Tin tức">
-	<meta property="og:image" content="http://theme.hstatic.net/1000242782/1000838257/14/share_fb_home.png?v=596">
-	<meta property="og:image:secure_url"
-		content="https://theme.hstatic.net/1000242782/1000838257/14/share_fb_home.png?v=596">
-	<meta property="og:url" content="https://www.otokechicken.vn/blogs/tin-tuc">
-	<meta property="og:site_name" content="Gà Rán Otoké">
-	<!-- SEO META DESCRIPTION -->
-	<meta name="description" content="">
-	<!-- END SEO META DESCRIPTION -->
-	<!-- SEO PAGI -->
-
-
-	<meta
-		href="/blogs/tin-tuc?fbclid=IwY2xjawGvlh5leHRuA2FlbQIxMAABHRtJU47sIV42ioZhtyfbZqUAB_krl-lrGR8mfDeRiIvl3gGjQVy4MBO8lA_aem_Y_D0bEXIMNvvshlEsaEmCA&amp;page=2"
-		rel="next">
-	<!-- END SEO PAGI -->
 
 	<!--+++++++++++++++++++++++++  CSS ++++++++++++++++++++++++-->
-	<link
-		href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=vietnamese"
-		rel="stylesheet">
 	<link href="//theme.hstatic.net/1000242782/1000838257/14/styles.css?v=596" rel="stylesheet" type="text/css"
 		media="all">
 	<!--+++++++++++++++++++++++++  JS ++++++++++++++++++++++++-->
@@ -56,113 +29,14 @@ session_start();
 </head>
 
 
-
-<body id="lama-theme" class="blog">
+<body>
 	<?php
 	include '../../utils/header.php'
 	?>
 
-
-	<svg xmlns="http://www.w3.org/2000/svg" class="hidden">
-		<symbol id="icon-add-cart">
-			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				viewBox="0 0 512 512" enable-background="new 0 0 512 512">
-				<g>
-					<g>
-						<polygon
-							points="447.992,336 181.555,336 69.539,80 0.008,80 0.008,48 90.477,48 202.492,304 447.992,304 		">
-						</polygon>
-					</g>
-					<path d="M287.992,416c0,26.5-21.5,48-48,48s-48-21.5-48-48s21.5-48,48-48S287.992,389.5,287.992,416z">
-					</path>
-					<path d="M447.992,416c0,26.5-21.5,48-48,48s-48-21.5-48-48s21.5-48,48-48S447.992,389.5,447.992,416z">
-					</path>
-					<g>
-						<polygon points="499.18,144 511.992,112 160.008,112 172.805,144 		"></polygon>
-						<polygon points="211.195,240 223.992,272 447.992,272 460.805,240 		"></polygon>
-						<polygon points="486.398,176 185.602,176 198.398,208 473.586,208 		"></polygon>
-					</g>
-				</g>
-			</svg>
-		</symbol>
-		<symbol id="icon-list-switch">
-			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				viewBox="0 0 194.828 194.828" style="enable-background:new 0 0 194.828 194.828;" xml:space="preserve">
-				<g>
-					<g>
-						<g>
-							<path d="M190.931,17.534H3.897C1.745,17.534,0,19.279,0,21.431v19.483c0,2.152,1.745,3.897,3.897,3.897h187.034
-									 c2.152,0,3.897-1.745,3.897-3.897V21.431C194.828,19.279,193.083,17.534,190.931,17.534z M187.034,37.017H7.793v-11.69h179.241
-									 V37.017z"></path>
-							<path d="M190.931,64.293H3.897C1.745,64.293,0,66.038,0,68.19v31.172c0,2.152,1.745,3.897,3.897,3.897h187.034
-									 c2.152,0,3.897-1.745,3.897-3.897V68.19C194.828,66.038,193.083,64.293,190.931,64.293z M187.034,95.466H7.793v-23.38h179.241
-									 V95.466z"></path>
-							<path d="M190.931,122.741H3.897c-2.152,0-3.897,1.745-3.897,3.897v46.759c0,2.152,1.745,3.897,3.897,3.897h187.034
-									 c2.152,0,3.897-1.745,3.897-3.897v-46.759C194.828,124.486,193.083,122.741,190.931,122.741z M187.034,169.5H7.793v-38.966
-									 h179.241V169.5z"></path>
-						</g>
-					</g>
-				</g>
-			</svg>
-
-		</symbol>
-		<symbol id="icon-sort-by">
-			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve">
-				<g>
-					<polygon points="85.877,154.014 85.877,428.309 131.706,428.309 131.706,154.014 180.497,221.213 217.584,194.27 108.792,44.46 
-											 0,194.27 37.087,221.213 	"></polygon>
-					<polygon points="404.13,335.988 404.13,61.691 358.301,61.691 358.301,335.99 309.503,268.787 272.416,295.73 381.216,445.54 
-											 490,295.715 452.913,268.802 	"></polygon>
-				</g>
-
-			</svg>
-		</symbol>
-		<symbol id="icon-search_white" viewBox="0 0 1024 1024">
-			<path class="path1"
-				d="M1014.176 968.256l-264.32-260.128c69.184-75.264 111.68-174.688 111.68-284.128 0-234.080-192.8-423.872-430.688-423.872s-430.72 189.792-430.72 423.872c0 234.112 192.864 423.872 430.72 423.872 102.752 0 197.088-35.552 271.072-94.688l265.376 261.12c12.928 12.736 33.952 12.736 46.88 0 12.96-12.672 12.96-33.376 0-46.048zM430.848 782.688c-201.312 0-364.48-160.64-364.48-358.688 0-198.080 163.168-358.656 364.48-358.656 201.28 0 364.448 160.576 364.448 358.656 0.032 198.048-163.168 358.688-364.448 358.688z">
-			</path>
-		</symbol>
-		<symbol id="icon-user" viewBox="0 0 1024 1024">
-			<title>user</title>
-			<path class="path1"
-				d="M622.826 702.736c-22.11-3.518-22.614-64.314-22.614-64.314s64.968-64.316 79.128-150.802c38.090 0 61.618-91.946 23.522-124.296 1.59-34.054 48.96-267.324-190.862-267.324s-192.45 233.27-190.864 267.324c-38.094 32.35-14.57 124.296 23.522 124.296 14.158 86.486 79.128 150.802 79.128 150.802s-0.504 60.796-22.614 64.314c-71.22 11.332-337.172 128.634-337.172 257.264h896c0-128.63-265.952-245.932-337.174-257.264z">
-			</path>
-		</symbol>
-	</svg>
-
-	<div class="main-body">
-
-		<div class="search-bar-mobile">
-			<div class="search-box wpo-wrapper-search">
-				<form action="/search" class="searchform searchform-categoris ultimate-search">
-					<div class="wpo-search-inner">
-						<input type="hidden" name="type" value="product">
-						<input required="" id="inputSearchAuto-mb" name="q" maxlength="40" autocomplete="off"
-							class="searchinput input-search search-input" type="text" size="20"
-							placeholder="Tìm kiếm sản phẩm...">
-					</div>
-					<button type="submit" class="btn-search btn" id="search-header-btn-mb">
-						<svg version="1.1" class="svg search" xmlns="http://www.w3.org/2000/svg"
-							xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27"
-							style="enable-background:new 0 0 24 27;" xml:space="preserve">
-							<path
-								d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z">
-							</path>
-							<rect x="17" y="17" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.2844 19.5856)"
-								width="4" height="8"></rect>
-						</svg>
-					</button>
-				</form>
-				<div id="ajaxSearchResults-mb" class="smart-search-wrapper ajaxSearchResults" style="display: none">
-					<div class="resultsContent"></div>
-				</div>
-			</div>
-		</div>
-
+	<div class="">
 		<main class="">
 			<div id="blog">
-
 				<div class="container-fluid">
 					<div class="row breadcrumb-shop">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd5  ">
@@ -174,15 +48,12 @@ session_start();
 									<meta itemprop="position" content="1">
 								</li>
 
-
 								<li class="active" itemprop="itemListElement" itemscope=""
 									itemtype="http://schema.org/ListItem">
 									<span itemprop="item" content="https://otokechicken.vn/blogs/tin-tuc"><strong
 											itemprop="name">Tin tức</strong></span>
 									<meta itemprop="position" content="2">
 								</li>
-
-
 							</ol>
 						</div>
 					</div>
@@ -372,7 +243,7 @@ session_start();
 													</li>
 
 													<li class="tree-menu-lv1 has-child  menu-collap ">
-														<a class="" href="javascript:void(0)" title="LIÊN HỆ"
+														<a class="" title="LIÊN HỆ"
 															target="_self">
 															<span class="">LIÊN HỆ</span>
 															<span class="icon-control"><i
@@ -791,7 +662,7 @@ session_start();
 
 
 		<div class="back-to-top hidden show">
-			<a href="javascript:void(0);">
+			<a>
 				<div class="btt-back">
 					<span class="btt-label-back">back to top</span>
 					<span class="btt-icon-back"><i class="fa fa-long-arrow-up"></i></span>

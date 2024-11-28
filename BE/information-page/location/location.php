@@ -2,10 +2,11 @@
 session_start();
 include_once __DIR__ . "/../../connect.php";
 
-
 $row = null;
-
-if (isset($_SESSION['email'])) {
+if (!isset($_SESSION['email'])) {
+    header("Location: ../../authentication-page/handle-auth/login-page.php");
+    exit();
+} else {
     $email = $_SESSION['email'];
     $query = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
     if (mysqli_num_rows($query) > 0) {
@@ -13,8 +14,6 @@ if (isset($_SESSION['email'])) {
     } else {
         echo "Không tìm thấy thông tin người dùng";
     }
-} else {
-    echo "Vui lòng đăng nhập";
 }
 ?>
 
@@ -39,6 +38,9 @@ if (isset($_SESSION['email'])) {
 
 <body>
     <?php
+    include '../../../fe/utils/header.php';
+    ?>
+    <?php
     if (isset($_SESSION['update_success']) && $_SESSION['update_success'] === true) {
         echo "<script>
             swal('Cập nhật thành công!', '', 'success')
@@ -61,9 +63,7 @@ if (isset($_SESSION['email'])) {
     }
     ?>
 
-    <?php
-    include '../../../fe/utils/header.php';
-    ?>
+
     <div class="info-container">
         <section class="info-title">
             <h1 class="title-info-container">Tài khoản của bạn</h1>
@@ -93,7 +93,7 @@ if (isset($_SESSION['email'])) {
                                 <path d="M9 12h12l-3-3m0 6l3-3" />
                             </g>
                         </svg>
-                        <a href="../../authentication-page/handle-auth/login-page.php">Đăng xuất</a>
+                        <a href="../../authentication-page/handle-auth/logout.php">Đăng xuất</a>
                     </li>
                 </ul>
             </section>
@@ -114,7 +114,7 @@ if (isset($_SESSION['email'])) {
 
                 <div class="form-update">
                     <form action="update-user.php" method="post" onsubmit="return validateUpdateForm()">
-                        <input type="hidden" name="id" value="<?= isset($row['id']) ? htmlspecialchars($row['id']) : '' ?>">
+                        <input type="hidden" name="user_id" value="<?= isset($row['user_id']) ? htmlspecialchars($row['user_id']) : '' ?>">
                         <div class="input-group">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512">
                                 <path fill="currentColor"

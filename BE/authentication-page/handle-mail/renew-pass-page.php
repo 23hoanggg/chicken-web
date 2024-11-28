@@ -27,14 +27,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-            $sql = "UPDATE users SET password_hash = ?, reset_token_hash = NULL, reset_token_expires_at = NULL WHERE id = ?";
+            $sql = "UPDATE users SET password_hash = ?, reset_token_hash = NULL, reset_token_expires_at = NULL WHERE user_id = ?";
             $stmt = $mysqli->prepare($sql);
 
             if (!$stmt) {
                 die("SQL error: " . $mysqli->error);
             }
 
-            $stmt->bind_param("ss", $password_hash, $user["id"]);
+            $stmt->bind_param("ss", $password_hash, $user["user_id"]);
 
             if ($stmt->execute()) {
                 $_SESSION['resetPass_success'] = true;
@@ -58,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../../../fe/utils/header.css">
     <link rel="stylesheet" href="../../../fe/utils/footer.css">
+    <link rel="stylesheet" href="../../../fe/contact/contact.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -113,6 +114,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     include '../../../fe/utils/footer.php';
     ?>
     <script src="../utils/validateForm.js"></script>
+    <script src="../../../fe/contact/contact.js"></script>
+    <script src="../../../fe/home/final.js"></script>
+    <script src="../../../fe/utils/search.js"></script>
 </body>
 
 </html>

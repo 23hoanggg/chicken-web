@@ -1,4 +1,10 @@
-<?php include('config.php'); ?>
+<?php include('config.php');
+include_once __DIR__ . "../../../be/connect.php";
+include_once __DIR__ . "../../../be/menu/functionProducts.php";
+include_once __DIR__ . "../../../be/menu/add_to_cart.php";
+// include_once __DIR__ . "../../../be/menu/search.php"
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +17,7 @@
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="../contact/contact.css">
     <link rel="stylesheet" href="../home/home.css">
+    <link rel="stylesheet" href="search.css">
 </head>
 
 <body>
@@ -91,7 +98,7 @@
                     </svg>
                 </button>
                 <button id="site-cart-handle" class="icon-cart" aria-label="Open cart" title="Giỏ hàng">
-                    <a href="/Demo/Menu/cart.php">
+                    <a href="/otoke-chicken/be/menu/cart.php">
                         <span class="cart-menu" aria-hidden="true">
                             <svg version="1.1" class="svg-cart" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 64"
@@ -183,9 +190,8 @@
             </ul>
         </div>
         <div class="search-container">
-            <div class="header-wrap-icon">
+            <!-- <div class="icon-menu-search">
                 <?php
-                // Kiểm tra trạng thái đăng nhập
                 if (isset($_SESSION['email'])) {
                     // Nếu người dùng đã đăng nhập, cho phép truy cập thông tin tài khoản
                     echo '<button class="icon-account" aria-label="Tài khoản" title="Tài khoản">
@@ -235,7 +241,7 @@
                     </svg>
                 </button>
                 <button id="site-cart-handle" class="icon-cart" aria-label="Open cart" title="Giỏ hàng">
-                    <a href="/Demo/Menu/cart.php">
+                    <a href="/otoke-chicken/be/menu/cart.php">
                         <span class="cart-menu" aria-hidden="true">
                             <svg version="1.1" class="svg-cart" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 64"
@@ -251,11 +257,65 @@
                     </a>
                 </button>
             </div>
-            <div>
-                <input type="text" placeholder="Tìm kiếm sản phẩm..." class="input-search-icon">
+            <div class="search-text">
+                <h1>Tìm kiếm sản phẩm</h1>
             </div>
+            <div class="input-search-bar">
+                <input type="text" placeholder="Nhập tên sản phẩm..." class="input-search-menu">
+            </div> -->
+
+            <!-- <div class="search-bar">
+                <input
+                    type="text"
+                    id="search-input"
+                    placeholder="Nhập tên hoặc SKU để tìm kiếm sản phẩm..."
+                    onkeyup="searchProducts()" />
+            </div>
+            <div id="search-results"></div>
+            <div id="product-details" style="display: none;">
+            </div> -->
         </div>
     </header>
+    <!-- <script>
+        function searchProducts() {
+            const query = document.getElementById('search-input').value.trim();
+
+            if (query === '') {
+                document.getElementById('search-results').innerHTML = '';
+                return;
+            }
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'search.php?query=' + encodeURIComponent(query), true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById('search-results').innerHTML = xhr.responseText;
+
+                    // Thêm sự kiện click vào từng sản phẩm
+                    const products = document.querySelectorAll('.product');
+                    products.forEach(product => {
+                        product.addEventListener('click', function() {
+                            const productId = this.dataset.productId;
+                            showProductDetails(productId);
+                        });
+                    });
+                }
+            };
+            xhr.send();
+        }
+
+        function showProductDetailsByName(productName) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'product_details.php?name=' + encodeURIComponent(productName), true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById('product-details').style.display = 'block';
+                    document.getElementById('product-details').innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+    </script> -->
     <script src="../contact/contact.js"></script>
     <script src="search.js"></script>
 </body>

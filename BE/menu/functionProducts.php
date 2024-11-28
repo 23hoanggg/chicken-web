@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__ . "/../connect.php";
+include_once __DIR__ . "../../connect.php";
 
 
 // Hàm thực hiện truy vấn và trả về kết quả
@@ -41,10 +41,10 @@ function displayProducts($conn, $type)
                     <span><?= number_format($row['price'], 0, ',', '.') ?>₫</span>
                 </div>
                 <form action='add_to_cart.php' method='POST'>
-                    <!-- Truyền product_id qua form -->
                     <input type='hidden' name='product_id' value='<?= htmlspecialchars($row['product_id']) ?>' />
                     <button type='submit' class='add-btn'>+</button>
                 </form>
+                <!-- <button class='add-btn' data-product-id='<?= htmlspecialchars($row['product_id']) ?>'>+</button> -->
             </div>
 <?php
         }
@@ -52,3 +52,4 @@ function displayProducts($conn, $type)
         echo "<p>Không có sản phẩm nào trong bảng.</p>";
     }
 }
+?>

@@ -1,5 +1,8 @@
 <?php
-session_start();
+// session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Kiểm tra nếu giỏ hàng tồn tại và có nhận product_id và quantity
 if (isset($_SESSION['cart']) && isset($_POST['product_id']) && isset($_POST['quantity'])) {

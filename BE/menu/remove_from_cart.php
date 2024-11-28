@@ -1,5 +1,8 @@
 <?php
-session_start();
+// session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if (isset($_POST['product_id'])) {
     $product_id = intval($_POST['product_id']);
 
