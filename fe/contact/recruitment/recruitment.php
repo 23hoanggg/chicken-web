@@ -1,38 +1,26 @@
 <?php
 session_start();
-include_once __DIR__ . "/../../connect.php";
-
-if (!isset($_SESSION['email'])) {
-    header("Location: ../../authentication-page/handle-auth/login-page.php");
-    exit();
-}
-
-$email = $_SESSION['email'];
-$stmt = $conn->prepare("SELECT firstName, lastName, email, locationUser FROM users WHERE email = ?");
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$result = $stmt->get_result();
-$user = $result->fetch_assoc();
-$stmt->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tài khoản - gà rán Otoké</title>
-    <link rel="stylesheet" href="../../../fe/utils/search.css">
-    <link rel="stylesheet" href="../../../fe/utils/header.css">
-    <link rel="stylesheet" href="../../../fe/utils/footer.css">
-    <link rel="stylesheet" href="../../../fe/contact/contact.css">
+    <title>Tuyển dụng</title>
+    <!-- nhúng file reset -->
+    <link rel="stylesheet" href="../../utils/header.css">
+    <link rel="stylesheet" href="../../utils/footer.css">
+    <link rel="stylesheet" href="./../../contact/contact.css">
+    <link rel="stylesheet" href="grid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="recruitment.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
     <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="information.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
 </head>
 
 <body>
@@ -135,18 +123,18 @@ $stmt->close();
                 <nav class="main-nav text-center">
                     <ul class="clearfix">
                         <li class="active">
-                            <a href="../../../fe/home/index.php" title="TRANG CHỦ" class="menu-link"> TRANG CHỦ </a>
+                            <a href="/otoke-chicken/fe/home/index.php" title="TRANG CHỦ" class="menu-link"> TRANG CHỦ </a>
                         </li>
                         <li class="">
-                            <a href="../../../fe/introduce/introduce.php" title="GIỚI THIỆU" class="menu-link">
+                            <a href="/otoke-chicken/fe/introduce/introduce.php" title="GIỚI THIỆU" class="menu-link">
                                 GIỚI THIỆU
                             </a>
                         </li>
                         <li class="">
-                            <a href="../../../be/menu/menu.php" title="MENU" class="menu-link"> MENU </a>
+                            <a href="/otoke-chicken/be/menu/menu.php" title="MENU" class="menu-link"> MENU </a>
                         </li>
                         <li class="">
-                            <a href="../../../fe/promotion/promotion.php" title="KHUYẾN MÃI" class="menu-link">
+                            <a href="/otoke-chicken/fe/promotion/promotion.php" title="KHUYẾN MÃI" class="menu-link">
                                 KHUYẾN MÃI
                             </a>
                         </li>
@@ -213,57 +201,116 @@ $stmt->close();
             </div>
         </div>
     </header>
-    <div class="info-container">
-        <section class="info-title-box">
-            <h1 class="title-info-container">Tài khoản của bạn</h1>
-            <hr class="hr-information">
-        </section>
-        <div class="info-box">
-            <section class="info-menu">
-                <h3 class="title-info-box">TÀI KHOẢN</h3>
-                <ul>
-                    <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 56 56">
-                            <path fill="currentColor" d="M28.012 28.023c5.578 0 10.125-4.968 10.125-11.015c0-6-4.5-10.711-10.125-10.711c-5.555 0-10.125 4.805-10.125 10.758c.023 6.023 4.57 10.968 10.125 10.968m0-3.539c-3.422 0-6.352-3.28-6.352-7.43c0-4.077 2.883-7.218 6.352-7.218c3.515 0 6.351 3.094 6.351 7.172c0 4.148-2.883 7.476-6.351 7.476m-14.719 25.22h29.438c3.89 0 5.742-1.173 5.742-3.75c0-6.142-7.735-15.024-20.461-15.024c-12.727 0-20.485 8.883-20.485 15.023c0 2.578 1.852 3.75 5.766 3.75m-1.125-3.54c-.61 0-.867-.164-.867-.656c0-3.844 5.953-11.04 16.71-11.04c10.759 0 16.688 7.196 16.688 11.04c0 .492-.234.656-.843.656Z" />
-                        </svg>
-                        <a href="../information/information.php">Thông tin tài khoản</a>
-                    </li>
-                    <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-                            <path fill="currentColor" d="M10 20S3 10.87 3 7a7 7 0 1 1 14 0c0 3.87-7 13-7 13zm0-11a2 2 0 1 0 0-4a2 2 0 0 0 0 4z" />
-                        </svg>
-                        <a href="../location/location.php">Danh sách địa chỉ</a>
-                    </li>
-                    <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                <path d="M14 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2" />
-                                <path d="M9 12h12l-3-3m0 6l3-3" />
-                            </g>
-                        </svg>
-                        <a href="../../authentication-page/handle-auth/logout.php">Đăng xuất</a>
-                    </li>
-                </ul>
-            </section>
-            <section class="info-full">
-                <h3 class="title-info-box">THÔNG TIN TÀI KHOẢN</h3>
-                <div class="account-info">
-                    <?php if ($user): ?>
-                        <p><?= $user['firstName'] . ' ' . $user['lastName'] ?></p>
-                        <p><?= $user['email'] ?></p>
-                        <p><?= $user['locationUser'] ?></p>
-                        <a href="../location/location.php">Xem địa chỉ</a>
-                    <?php else: ?>
-                        <p>Không tìm thấy thông tin người dùng</p>
-                    <?php endif; ?>
+    <div class=" main">
+        <div class="row">
+            <!-- sidebar -->
+            <div class="col l-3">
+                <div class="sidebar-blog">
+                    <div class="sidebar-blog-news">
+                        <div class="sidebar-blog-news-title">
+                            <h2 class="sidebar-blog-news__heading">Bài viết mới nhất</h2>
+                        </div>
+
+                        <div class="sidebar-blog-news-content">
+                            <div class="sidebar-blog-news__link-img">
+                                <a href="/otoke-chicken/fe/contact/recruitment/recruitment-detail.php"><img src="./assets/img/tuyen_dung_otoke.jpg" alt="Image"></a>
+                            </div>
+                            <div class="sidebar-blog-news__link-content">
+                                <h3 class=""><a href="/otoke-chicken/fe/contact/recruitment/recruitment-detail.php">Tuyển dụng nhân viên hệ thống cửa hàng</a></h3>
+                                <span class="author"><a href="/otoke-chicken/fe/contact/recruitment/recruitment-detail.php">Otoke admin</a></span>
+                                <span class="date">17.04.2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="sidebar-blog-menu">
+                        <div class="sidebar-blog-menu-title">
+                            <h2 class="sidebar-blog-menu__heading">Danh mục Blog</h2>
+                        </div>
+
+                        <div class="sidebar-blog-menu-body">
+                            <ul class="sidebar-blog-menu-body__nav">
+                                <li><a href="/otoke-chicken/fe/home/index.php">Trang chủ</a></li>
+                                <li><a href="/otoke-chicken/fe/introduce/introduce.php">Giới thiệu</a></li>
+                                <li><a href="/otoke-chicken/be/menu/menu.php">Menu</a></li>
+                                <li><a href="/otoke-chicken/fe/promotion/promotion.php">Khuyến mãi</a></li>
+                                <li><a href="" class="dropdown-link">
+                                        Liên hệ
+                                        <i class="sidebar-blog-menu-body__nav-icon fa-solid fa-minus"></i>
+                                    </a>
+                                    <ul class="sidebar-blog-menu-body__subnav">
+                                        <li><a href="">Tin Tức</a></li>
+                                        <li><a href="/otoke-chicken/fe/contact/recruitment/recruitment.php">Tuyển Dụng</a></li>
+                                        <li><a href="/otoke-chicken/fe/contact/party-service/party-service.php">Dịch Vụ Tiệc</a></li>
+                                        <li><a href="">Hệ Thống Cửa Hàng</a></li>
+                                        <li><a href="/otoke-chicken/fe/contact/franchise-cooperation/franchise-cooperation.php">Nhượng Quyền Thương Hiệu</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </div>
+
+
+            <!-- content -->
+            <div class="col l-9">
+                <div class="content-blog">
+                    <div class="content-blog__heading">
+                        <h1>Tuyển Dụng</h1>
+                    </div>
+
+                    <div class="content-blog-wrapper">
+                        <div class="content-blog__body row">
+                            <div class="col l-4">
+                                <div class="content-blog__body-img-link">
+                                    <a href="/otoke-chicken/fe/contact/recruitment/recruitment-detail.php" title="TUYỂN DỤNG NHÂN VIÊN HỆ THỐNG CỬA HÀNG"><img src="./assets/img/tuyen_dung_otoke.jpg" alt="Image"></a>
+                                </div>
+                            </div>
+
+                            <div class="col l-8">
+                                <div class="content-blog__body-title">
+                                    <h3 class="content-blog__body-title-link"><a href="/otoke-chicken/fe/contact/recruitment/recruitment-detail.php" title="TUYỂN DỤNG NHÂN VIÊN HỆ THỐNG CỬA HÀNG">Tuyển dụng nhân viên hệ thống cửa hàng</a></h3>
+                                </div>
+
+                                <div class="content-blog__body-meta">
+                                    <span class="content-blog__body-meta-author">Người viết: OTOKE ADMIN</span>
+                                    <span class="content-blog__body-meta-date">17.04.2024</span>
+                                </div>
+
+                                <p class="content-blog__body-entry">
+                                    OTOKE CHICKEN TUYỂN DỤNG NHÂN VIÊN HỆ THỐNG CỬA HÀNG📝Công việc1. Nhân viên thu ngân- Đón tiếp và phục vụ khách hàng trong khu vực...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
         </div>
     </div>
-    <?php include '../../../fe/utils/footer.php'; ?>
-    <script src="../../../fe/contact/contact.js"></script>
-    <script src="../../../fe/utils/search.js"></script>
-    <script src="../../../fe/home/final.js"></script>
+    <?php
+    include '../../utils/footer.php'
+    ?>
+    <script src="../contact.js"></script>
+    <script src="../../utils/search.js"></script>
+    <script src="../../home/final.js"></script>
+
+    <script>
+        document.querySelector('.dropdown-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            const subnav = this.nextElementSibling;
+
+            if (subnav.style.display == 'block') {
+                subnav.style.display = 'none';
+            } else {
+                subnav.style.display = 'block';
+            }
+        });
+    </script>
 </body>
 
 </html>

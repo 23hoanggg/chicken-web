@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +21,7 @@
 
 <body>
 
-<div id="top-bar">
+    <div id="top-bar">
         <div class="container-fluid">
             <div class="row">
                 <div class="topbar-content">
@@ -144,7 +148,7 @@
             <ul class="list-contact">
                 <li class="news-li">
                     <div>
-                        <a href="../contact/news/news.php" title="TRANG CHỦ" class="menu-link">
+                        <a href="/otoke-chicken/fe/contact/news/news.php" title="TRANG CHỦ" class="menu-link">
                             <img src="https://theme.hstatic.net/1000242782/1000838257/14/no_image.jpg?v=596" alt="">
                             Tin Tức
                         </a>
@@ -152,7 +156,7 @@
                 </li>
                 <li class="recruitment-li">
                     <div>
-                        <a href="" title="GIỚI THIỆU" class="menu-link">
+                        <a href="/otoke-chicken/fe/contact/recruitment/recruitment.php" title="TUYỂN DỤNG" class="menu-link">
                             <img src="https://theme.hstatic.net/1000242782/1000838257/14/no_image.jpg?v=596" alt="">
                             Tuyển Dụng
                         </a>
@@ -160,7 +164,7 @@
                 </li>
                 <li class="party-service-li">
                     <div>
-                        <a href="" title="MENU" class="menu-link">
+                        <a href="/otoke-chicken/fe/contact/party-service/party-service.php" title="DỊCH VỤ TIỆC" class="menu-link">
                             <img src="https://theme.hstatic.net/1000242782/1000838257/14/no_image.jpg?v=596" alt="">
                             Dịch Vụ Tiệc
                         </a>
@@ -168,7 +172,7 @@
                 </li>
                 <li class="store-system-li">
                     <div>
-                        <a href="" title="KHUYẾN MÃI" class="menu-link">
+                        <a href="/otoke-chicken/fe/promotion/promotion.php" title="KHUYẾN MÃI" class="menu-link">
                             <img src="https://theme.hstatic.net/1000242782/1000838257/14/no_image.jpg?v=596" alt="">
                             Hệ Thống Cửa Hàng
                         </a>
@@ -176,7 +180,7 @@
                 </li>
                 <li class="franchise-cooperation-li">
                     <div>
-                        <a href="../contact/franchise-cooperation/franchise-cooperation.php" title="Nhượng quyền thương hiệu" class="menu-link contact-button" id="contact-button">
+                        <a href="/otoke-chicken/fe/contact/franchise-cooperation/franchise-cooperation.php" title="Nhượng quyền thương hiệu" class="menu-link contact-button" id="contact-button">
                             <img src="https://theme.hstatic.net/1000242782/1000838257/14/no_image.jpg?v=596" alt="">
                             Nhượng Quyền Thương Hiệu
                         </a>

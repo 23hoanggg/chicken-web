@@ -2,6 +2,12 @@
 session_start();  // Đảm bảo đã khởi tạo session trước khi sử dụng
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;  // Kiểm tra xem có user_id trong session không
 
+if ($user_id == null) { //
+    echo "Bạn phải đăng nhập để tiếp tục !!!." ;
+    header('../authentication-page/handle-auth/login-page.php');
+    exit();    
+}
+
 require_once __DIR__ . "../../connect.php"; // Kết nối cơ sở dữ liệu
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'place_order') {
@@ -10,12 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         if (empty($cart)) {
             echo "Giỏ hàng của bạn trống.";
             exit;  // Dừng xử lý nếu giỏ hàng trống
-        }
-
-        if (isset($_SESSION['user_id'])) {
-            $user_id = $_SESSION['user_id'];
-        } else {
-            die("Bạn phải đăng nhập trước khi đặt hàng.");
         }
 
         $total_amount = 0;

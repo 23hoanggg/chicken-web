@@ -1,39 +1,28 @@
 <?php
 session_start();
-include_once __DIR__ . "/../../connect.php";
-
-if (!isset($_SESSION['email'])) {
-    header("Location: ../../authentication-page/handle-auth/login-page.php");
-    exit();
-}
-
-$email = $_SESSION['email'];
-$stmt = $conn->prepare("SELECT firstName, lastName, email, locationUser FROM users WHERE email = ?");
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$result = $stmt->get_result();
-$user = $result->fetch_assoc();
-$stmt->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tài khoản - gà rán Otoké</title>
-    <link rel="stylesheet" href="../../../fe/utils/search.css">
-    <link rel="stylesheet" href="../../../fe/utils/header.css">
-    <link rel="stylesheet" href="../../../fe/utils/footer.css">
-    <link rel="stylesheet" href="../../../fe/contact/contact.css">
+    <title>Dịch vụ tiệc</title>
+    <!-- nhúng file reset -->
+    <link rel="stylesheet" href="../../utils/header.css">
+    <link rel="stylesheet" href="../../utils/footer.css">
+    <link rel="stylesheet" href="./../../contact/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="party-service.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
     <link rel="icon" href="../../../icon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="information.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+
 </head>
+
 
 <body>
     <div id="top-bar">
@@ -135,18 +124,18 @@ $stmt->close();
                 <nav class="main-nav text-center">
                     <ul class="clearfix">
                         <li class="active">
-                            <a href="../../../fe/home/index.php" title="TRANG CHỦ" class="menu-link"> TRANG CHỦ </a>
+                            <a href="/otoke-chicken/fe/home/index.php" title="TRANG CHỦ" class="menu-link"> TRANG CHỦ </a>
                         </li>
                         <li class="">
-                            <a href="../../../fe/introduce/introduce.php" title="GIỚI THIỆU" class="menu-link">
+                            <a href="/otoke-chicken/fe/introduce/introduce.php" title="GIỚI THIỆU" class="menu-link">
                                 GIỚI THIỆU
                             </a>
                         </li>
                         <li class="">
-                            <a href="../../../be/menu/menu.php" title="MENU" class="menu-link"> MENU </a>
+                            <a href="/otoke-chicken/be/menu/menu.php" title="MENU" class="menu-link"> MENU </a>
                         </li>
                         <li class="">
-                            <a href="../../../fe/promotion/promotion.php" title="KHUYẾN MÃI" class="menu-link">
+                            <a href="/otoke-chicken/fe/promotion/promotion.php" title="KHUYẾN MÃI" class="menu-link">
                                 KHUYẾN MÃI
                             </a>
                         </li>
@@ -213,57 +202,165 @@ $stmt->close();
             </div>
         </div>
     </header>
-    <div class="info-container">
-        <section class="info-title-box">
-            <h1 class="title-info-container">Tài khoản của bạn</h1>
-            <hr class="hr-information">
-        </section>
-        <div class="info-box">
-            <section class="info-menu">
-                <h3 class="title-info-box">TÀI KHOẢN</h3>
-                <ul>
-                    <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 56 56">
-                            <path fill="currentColor" d="M28.012 28.023c5.578 0 10.125-4.968 10.125-11.015c0-6-4.5-10.711-10.125-10.711c-5.555 0-10.125 4.805-10.125 10.758c.023 6.023 4.57 10.968 10.125 10.968m0-3.539c-3.422 0-6.352-3.28-6.352-7.43c0-4.077 2.883-7.218 6.352-7.218c3.515 0 6.351 3.094 6.351 7.172c0 4.148-2.883 7.476-6.351 7.476m-14.719 25.22h29.438c3.89 0 5.742-1.173 5.742-3.75c0-6.142-7.735-15.024-20.461-15.024c-12.727 0-20.485 8.883-20.485 15.023c0 2.578 1.852 3.75 5.766 3.75m-1.125-3.54c-.61 0-.867-.164-.867-.656c0-3.844 5.953-11.04 16.71-11.04c10.759 0 16.688 7.196 16.688 11.04c0 .492-.234.656-.843.656Z" />
-                        </svg>
-                        <a href="../information/information.php">Thông tin tài khoản</a>
-                    </li>
-                    <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-                            <path fill="currentColor" d="M10 20S3 10.87 3 7a7 7 0 1 1 14 0c0 3.87-7 13-7 13zm0-11a2 2 0 1 0 0-4a2 2 0 0 0 0 4z" />
-                        </svg>
-                        <a href="../location/location.php">Danh sách địa chỉ</a>
-                    </li>
-                    <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                <path d="M14 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2" />
-                                <path d="M9 12h12l-3-3m0 6l3-3" />
-                            </g>
-                        </svg>
-                        <a href="../../authentication-page/handle-auth/logout.php">Đăng xuất</a>
-                    </li>
-                </ul>
-            </section>
-            <section class="info-full">
-                <h3 class="title-info-box">THÔNG TIN TÀI KHOẢN</h3>
-                <div class="account-info">
-                    <?php if ($user): ?>
-                        <p><?= $user['firstName'] . ' ' . $user['lastName'] ?></p>
-                        <p><?= $user['email'] ?></p>
-                        <p><?= $user['locationUser'] ?></p>
-                        <a href="../location/location.php">Xem địa chỉ</a>
-                    <?php else: ?>
-                        <p>Không tìm thấy thông tin người dùng</p>
-                    <?php endif; ?>
+    <div class="content-party">
+        <!-- Begin: section-heading -->
+        <div class="section-heading">
+            <div class="section-heading-content">
+                <div class="section-heading-inner__texts">
+                    <div class="section-heading-inner__text">
+                        <p>Cùng Gà rán Otoké mang đến một bữa tiệc sinh nhật thật đáng nhớ và nhiều kỷ niệm dành cho các bé yêu.</p>
+                        <p>Mời bố mẹ khám phá những ưu đãi bên dưới và nhấc máy liên hệ Gà rán Otoké qua Hotline <strong>19009480</strong> để chọn cửa hàng, gói trang trí tiệc và phần ăn phù hợp cho các bé.</p>
+                        <p>Mọi thứ hãy để Otoké lo!</p>
+                    </div>
                 </div>
-            </section>
+                <div class="section-heading-inner__img">
+                    <img src="./assets/img/section_1_order_image.png" alt="Image">
+                </div>
+            </div>
         </div>
+        <!-- End: section-heading -->
+
+
+        <!-- Begin: section-body -->
+        <div class="section-body">
+            <div class="section-body-row-1">
+                <img src="./assets/img/section_2_order_1_img.jpg" alt="Image">
+            </div>
+
+            <div class="section-body-row-2">
+                <div class="section-body-row-2__item-left">
+                    <div class="section-body-row-2__item-left-img-container">
+                        <div class="section-body-row-2__item-left-imgs ">
+                            <img class="slide" src="./assets/img/section_3_order_1_img.jpg" alt="Image">
+                            <img class="slide" src="./assets/img/section_3_order_2_img.jpg" alt="Image">
+                            <img class="slide" src="./assets/img/section_3_order_3_img.jpg" alt="Image">
+                            <img class="slide" src="./assets/img/section_3_order_4_img.jpg" alt="Image">
+                        </div>
+                    </div>
+
+                    <div class="section-body-row-2__item-left-btn">
+                        <div class="section-body-row-2__item-left-btn--prev" onclick="goPrev()">
+                            <i class="section-body-row-2__item-left-icon fa-solid fa-angle-left "></i>
+                        </div>
+                        <div class="section-body-row-2__item-left-btn--next " onclick="goNext()">
+                            <i class="section-body-row-2__item-left-icon fa-solid fa-angle-right "></i>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-body-row-2__item-right">
+                    <img src="./assets/img/section_3_order_image_left.jpg" alt="Image">
+                </div>
+            </div>
+        </div>
+        <!-- End : section body -->
+
+
+
+        <!-- Begin: section footer -->
+        <div class="section-footer">
+            <div class="section-footer-row">
+                <div class="section-footer-row__heading">
+                    <h3>Tiệc vui thả ga - Ưu đãi nhận quà</h3>
+                </div>
+                <div class="section-footer-row__item">
+                    <div class="section-footer-row__item-imgs">
+                        <img class="img" src="./assets/img/section_4_order_1_img.jpg" alt="Image">
+                        <img class="img" src="./assets/img/section_4_order_2_img.jpg" alt="Image">
+                        <img class="img" src="./assets/img/section_4_order_3_img.jpg" alt="Image">
+                        <img class="img" src="./assets/img/section_4_order_4_img.jpg" alt="Image">
+                        <img class="img" src="./assets/img/section_4_order_5_img.jpg" alt="Image">
+                        <img class="img" src="./assets/img/section_4_order_6_img.jpg" alt="Image">
+                        <img class="img" src="./assets/img/section_4_order_8_img.jpg" alt="Image">
+                        <img class="img" src="./assets/img/section_4_order_9_img.jpg" alt="Image">
+                        <img class="img" src="./assets/img/section_4_order_10_img.jpg" alt="Image">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="section-footer-btn">
+                <div class="section-footer-btn__prev" onclick="Prev()">
+                    <i class="section-footer-icon fa-solid fa-angle-left"></i>
+                </div>
+                <div class="section-footer-btn__next" onclick="Next()">
+                    <i class="section-footer-icon fa-solid fa-angle-right"></i>
+                </div>
+
+            </div>
+        </div>
+
+
     </div>
-    <?php include '../../../fe/utils/footer.php'; ?>
-    <script src="../../../fe/contact/contact.js"></script>
-    <script src="../../../fe/utils/search.js"></script>
-    <script src="../../../fe/home/final.js"></script>
+
+    <?php
+    include '../../utils/footer.php'
+    ?>
+    <script src="../contact.js"></script>
+    <script src="../../utils/search.js"></script>
+    <script src="../../home/final.js"></script>
+
+    <!-- Slide show section body -->
+    <script>
+        const slides = document.querySelectorAll('.slide'); // lấy ra danh sách ảnh
+        var counter = 0;
+
+        slides.forEach((slide, index) => { // duyệt qua từng ảnh
+            slide.style.left = `${index * 100}%`
+        })
+
+        const goPrev = () => {
+            counter--
+            if (counter < 0) counter = slides.length - 1;
+            slideImage()
+
+        }
+
+        const goNext = () => {
+            counter++
+            if (counter == slides.length) counter = 0;
+            slideImage()
+
+        }
+
+        const slideImage = () => {
+            slides.forEach((slide) => {
+                slide.style.transform = `translateX(-${counter * 100}%)`
+            })
+        }
+    </script>
+
+
+
+    <!-- Slide show section footer -->
+    <script>
+        const imgs = document.querySelectorAll('.img');
+        var current = 0;
+
+        imgs.forEach((img, index) => {
+            img.style.left = `${index * 1140}px`
+        })
+
+        const Prev = () => {
+            current--
+            if (current < 0) current = imgs.length - 1
+            slideImg()
+        }
+
+        const Next = () => {
+            current++
+            if (current == imgs.length) current = 0
+            slideImg()
+        }
+
+        const slideImg = () => {
+            imgs.forEach((img) => {
+                img.style.transform = `translateX(-${current * 1140}px)`
+            })
+        }
+    </script>
+
 </body>
 
 </html>

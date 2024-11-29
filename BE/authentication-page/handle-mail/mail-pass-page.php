@@ -168,7 +168,7 @@ include_once __DIR__ . "/../../connect.php";
             </div>
         </div>
         <div class="contact-container">
-            <ul class="list-contact">
+        <ul class="list-contact">
                 <li class="news-li">
                     <div>
                         <a href="/otoke-chicken/fe/contact/news/news.php" title="TRANG CHỦ" class="menu-link">
@@ -179,7 +179,7 @@ include_once __DIR__ . "/../../connect.php";
                 </li>
                 <li class="recruitment-li">
                     <div>
-                        <a href="/otoke-chicken/fe/introduce/introduce.php" title="GIỚI THIỆU" class="menu-link">
+                        <a href="/otoke-chicken/fe/contact/recruitment/recruitment.php" title="TUYỂN DỤNG" class="menu-link">
                             <img src="https://theme.hstatic.net/1000242782/1000838257/14/no_image.jpg?v=596" alt="">
                             Tuyển Dụng
                         </a>
@@ -187,7 +187,7 @@ include_once __DIR__ . "/../../connect.php";
                 </li>
                 <li class="party-service-li">
                     <div>
-                        <a href="/otoke-chicken/be/menu/menu.php" title="MENU" class="menu-link">
+                        <a href="/otoke-chicken/fe/contact/party-service/party-service.php" title="DỊCH VỤ TIỆC" class="menu-link">
                             <img src="https://theme.hstatic.net/1000242782/1000838257/14/no_image.jpg?v=596" alt="">
                             Dịch Vụ Tiệc
                         </a>
