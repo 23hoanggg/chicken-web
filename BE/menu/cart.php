@@ -19,6 +19,7 @@ include 'update_quantity.php';
     <link rel="stylesheet" href="../../fe/utils/footer.css">
     <link rel="stylesheet" href="../../fe/utils/header.css">
     <link rel="stylesheet" href="../../fe/utils/search.js">
+    <link rel="stylesheet" href="../../fe/utils/search.css">
     <!-- <link rel="stylesheet" href="../../fe/utils/search.css"> -->
     <link rel="stylesheet" href="../../fe/contact/contact.css">
     <link rel="icon" href="../../icon.svg" type="image/svg+xml">

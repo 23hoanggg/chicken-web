@@ -28,7 +28,7 @@ $payment_success = true; // Giả sử thanh toán thành công
 if ($payment_success) {
     echo "<script>
             alert('Thanh toán thành công!');
-            window.location.href = '/otoke-chicken/fe/home/home.php'; 
+            window.location.href = '/otoke-chicken/fe/home/index.php'; 
             </script>";
     unset($_SESSION["cart"]); // Xóa giỏ hàng
 } else {

@@ -22,7 +22,7 @@ include 'add_to_cart.php';
 <!-- Fixed header -->
 <header class="header">
   <div class="logo">
-    <a href="/otoke-chicken/fe/home/home.php">
+    <a href="/otoke-chicken/fe/home/index.php">
       <img src="https://theme.hstatic.net/1000242782/1000838257/14/fastorder_02_header_logo.png?v=590"
         alt="Gà Rán Otoke" class="logo-img" />
     </a>
