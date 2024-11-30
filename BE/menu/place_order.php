@@ -1,12 +1,6 @@
 <?php
-session_start();  // Đảm bảo đã khởi tạo session trước khi sử dụng
+session_start();
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;  // Kiểm tra xem có user_id trong session không
-
-if ($user_id == null) { //
-    echo "Bạn phải đăng nhập để tiếp tục !!!." ;
-    header('../authentication-page/handle-auth/login-page.php');
-    exit();    
-}
 
 require_once __DIR__ . "../../connect.php"; // Kết nối cơ sở dữ liệu
 
@@ -27,21 +21,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             }
         }
 
-        // Tạo đơn hàng mới
-        $stmt_order = $conn->prepare("INSERT INTO orders (user_id, total_amount, created_at) VALUES (?, ?, NOW())");
-        if ($stmt_order) {
-            $stmt_order->bind_param("id", $user_id, $total_amount);
-            $stmt_order->execute();
-            $order_id = $stmt_order->insert_id;  // Lấy ID của đơn hàng mới tạo
-            $stmt_order->close();
+        // Chèn dữ liệu vào bảng orders
+        $stmt = $conn->prepare("INSERT INTO orders (user_id, total_amount) VALUES (?, ?)");
+        if ($stmt) {
+            $stmt->bind_param("id", $user_id, $total_amount);
+            $stmt->execute();
+            $order_id = $stmt->insert_id; // Lấy ID đơn hàng vừa tạo
+            $stmt->close();
 
             // Thêm chi tiết sản phẩm vào bảng order_items
             $stmt_item = $conn->prepare("INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)");
             if ($stmt_item) {
                 foreach ($cart as $item) {
-                    $product_id = intval($item['id']);  // ID sản phẩm
-                    $quantity = intval($item['quantity']);  // Số lượng sản phẩm
-                    $price = floatval($item['price']);  // Giá tại thời điểm đặt hàng
+                    $product_id = intval($item['id']); // ID sản phẩm
+                    $quantity = intval($item['quantity']); // Số lượng sản phẩm
+                    $price = floatval($item['price']); // Giá tại thời điểm đặt hàng
 
                     // Thêm sản phẩm vào bảng order_items
                     $stmt_item->bind_param("iiid", $order_id, $product_id, $quantity, $price);
@@ -49,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                 }
                 $stmt_item->close();
 
-                echo "Đơn hàng đã được tạo thành công. Hãy kiểm tra giỏ hàng của bạn!";
+                echo "Đơn hàng đã được tạo thành công.";
             } else {
                 die("Lỗi khi chèn vào bảng order_items: " . $conn->error);
             }

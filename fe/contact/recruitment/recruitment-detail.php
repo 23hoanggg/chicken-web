@@ -10,6 +10,7 @@ session_start();
    <title>Tuyển Dụng Nhân Viên Hệ Thống Cửa Hàng</title>
    <!-- nhúng file reset -->
    <link rel="stylesheet" href="grid.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
    <link rel="stylesheet" href="../../utils/header.css">
    <link rel="stylesheet" href="../../utils/footer.css">
    <link rel="stylesheet" href="./../../contact/contact.css">
