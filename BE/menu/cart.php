@@ -10,6 +10,7 @@ include 'update_quantity.php';
 if (!isset($_SESSION['user_id'])) {
     echo "<script>
             alert('Bạn phải đăng nhập trước khi đặt hàng.');
+            window.location.href = '/otoke-chicken/be/authentication-page/handle-auth/login-page.php';
           </script>";
     exit; // Ngăn người dùng chưa đăng nhập truy cập trang
 }
